@@ -1,5 +1,5 @@
 
-DROP TABLE IF EXISTS PeopleTable;
+DROP TABLE IF EXISTS FriendTable;
 DROP TABLE IF EXISTS Users;
 
 CREATE TABLE Users(
@@ -8,17 +8,17 @@ CREATE TABLE Users(
     Password TEXT NOT NULL
 )
 
-CREATE TABLE PeopleTable (
+CREATE TABLE FriendTable (
     FriendID SERIAL,
     FirstName TEXT NULL,
     LastName TEXT NULL,
     Gender TEXT NULL,
-    HairColor,
-    EyeColor,
-    Hobby,
-    BirthDay,
-    BirthMonth,
-    BirthYear,
-    UserID
+    HairColor TEXT NULL,
+    EyeColor TEXT NULL,
+    Hobby TEXT NULL,
+    BirthDay INTEGER NOT NULL,
+    BirthMonth INTEGER NOT NULL,
+    BirthYear INTEGER NOT NULL,
+    UserID INTEGER NOT NULL
 
 );
