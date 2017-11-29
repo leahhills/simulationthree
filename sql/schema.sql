@@ -20,7 +20,9 @@ CREATE TABLE FriendTable (
     BirthDay INTEGER NOT NULL,
     BirthMonth INTEGER NOT NULL,
     BirthYear INTEGER NOT NULL,
-    UserID INTEGER NOT NULL
+    UserID INTEGER NOT NULL,
+    AuthID TEXT NOT NULL
+
 
 );
 
