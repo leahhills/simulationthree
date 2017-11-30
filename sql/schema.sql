@@ -21,13 +21,13 @@ CREATE TABLE Qualities(
     BirthDay INTEGER NOT NULL,
     BirthMonth INTEGER NOT NULL,
     BirthYear INTEGER NOT NULL,
-    UserID INTEGER NOT NULL
+    UserID INTEGER NOT NULL REFERENCES Users(id)
 );
 
 
 CREATE TABLE FriendList(
-    UserID INTEGER NOT NULL,
-    FriendID INTEGER NOT NULL
+    UserID INTEGER NOT NULL REFERENCES Users(id),
+    FriendID INTEGER NOT NULL REFERENCES Qualities(id)
 );
 
 
