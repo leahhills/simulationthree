@@ -13,7 +13,7 @@
     "passport-auth0": "^0.6.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
-    "react-scripts": "1.0.17"
+    "react-scripts": "^1.0.17"
   },
   "scripts": {
     "start-server": "nodemon server/index.js",
@@ -21,5 +21,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "main":"./server/index.js"
 }
