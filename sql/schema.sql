@@ -1,33 +1,33 @@
 
+DROP TABLE IF EXISTS FriendList;
 DROP TABLE IF EXISTS Qualities;
 DROP TABLE IF EXISTS Users;
-DROP TABLE IF EXISTS FriendList;
 
 CREATE TABLE Users(
-    UserID SERIAL PRIMARY KEY,
-    UserName TEXT NOT NULL,
-    Password TEXT NOT NULL,
-    AuthID TEXT NOT NULL
+    id SERIAL PRIMARY KEY,
+    username TEXT NOT NULL,
+    password TEXT NOT NULL,
+    authid TEXT NOT NULL
 );
 
 CREATE TABLE Qualities(
-    FriendID SERIAL PRIMARY KEY,
-    FirstName TEXT NULL,
-    LastName TEXT NULL,
-    Gender TEXT NULL,
-    HairColor TEXT NULL,
-    EyeColor TEXT NULL,
-    Hobby TEXT NULL,
-    BirthDay INTEGER NOT NULL,
-    BirthMonth INTEGER NOT NULL,
-    BirthYear INTEGER NOT NULL,
-    UserID INTEGER NOT NULL REFERENCES Users(UserID)
+    id SERIAL PRIMARY KEY,
+    firstname TEXT NULL,
+    lastname TEXT NULL,
+    gender TEXT NULL,
+    haircolor TEXT NULL,
+    eyecolor TEXT NULL,
+    hobby TEXT NULL,
+    birthday INTEGER NOT NULL,
+    birthmonth INTEGER NOT NULL,
+    birthyear INTEGER NOT NULL,
+    userid INTEGER NOT NULL REFERENCES Users(id)
 );
 
 
 CREATE TABLE FriendList(
-    UserID INTEGER NOT NULL REFERENCES Users(UserID),
-    FriendID INTEGER NOT NULL REFERENCES Qualities(FriendID)
+    user_id INTEGER NOT NULL REFERENCES Users(id) ON DELETE CASCADE,
+    friend_id INTEGER NOT NULL REFERENCES Users(id) ON DELETE CASCADE
 );
 
 
