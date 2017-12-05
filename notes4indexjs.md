@@ -1,4 +1,7 @@
-DOTENV
+Here are my notes as I did this project to understand more fully what is going on here in my app.
+
+
+//DOTENV
 
 -dotenv helps load environment variables from a .env file into process.env
 always create a .env file in the root directory of your project.add environemnet specif. variables 
@@ -8,7 +11,7 @@ defined in your .env file
 
 
 
-2 THINGS WE IMPLEMENT IN ORDER TO USE AUTH0
+//2 THINGS WE IMPLEMENT IN ORDER TO USE AUTH0
 
 -passport  what were using so we can implement auth0 with our server and with our application
 -Auth0strategy
@@ -59,3 +62,23 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+
+
+
+//WHAT IS A REDUCER???
+A reducer is a function that returns a piece of the application state. they produce the value of our state. The keys can be whatever you want.the reducer is only really concerned about the value of the state.
+Since app can have many diff. pieces of state it can also have many differnt reducers
+
+STEP 1
+
+Create reducer
+
+STEP 2
+
+wire it into application
+
+
+//Container
+
+A container is just a component that has direct access to the state that's produced by redux.
