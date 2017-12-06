@@ -66,9 +66,14 @@ app.use(passport.session());
 
 
 
+
+
+//REDUX
+
+
 //WHAT IS A REDUCER???
 A reducer is a function that returns a piece of the application state. they produce the value of our state. The keys can be whatever you want.the reducer is only really concerned about the value of the state.
-Since app can have many diff. pieces of state it can also have many differnt reducers
+Since app can have many diff. pieces of state it can also have many different reducers
 
 STEP 1
 
@@ -82,3 +87,42 @@ wire it into application
 //Container
 
 A container is just a component that has direct access to the state that's produced by redux.
+
+Which one should we make a container?
+
+In general you want the most parent component that cares about a particular piece of state to be a container.
+
+
+//Store 
+
+What is the store?
+ 
+Can be thought of as a place where all of our data is kept track of. Like a massive JS object that has all the keys and values associated with our app.
+
+//example situation
+Say if one of our components initiates a change. Our store is notified of the changes and then it tells those components that have subscribed to the store to change that are concerned with those changes.
+
+How does it do this exactly?
+
+Component initiating change informs the store. In order to    reflect that change or how that data should change the store uses a special function called a REDUCER(To be contn below).
+
+reducer takes current state of application, it must take an action(indicates the change that has occured) and how should that state change? And what will be our new state?
+
+It's job is to take the state of the application and an action which will indicate the  that has occured and then will return an entirely new state that reflects the changes in the application. Pure function in js.
+
+STORE
+store will keep track of those changes, and when something has changed, it will also notify components that something has changed and you should update to reflect that.
+
+REDUCER
+IN an app that uses redux to control state. THe reducer is where are all the changes occur. It's a function that takes  the state of our application and figures out what changes should occur.
+
+Going to be called with state of our application and then some  sort of action. the state here is the old state of application.
+function reducer(state,action){}
+
+JS action should be a js object that has a type and the type should be a string that describes the action.
+
+
+
+ 
+Then the reducer figures out the action.type and return a new state based off of whatever the action is. a nice clean way of doing this is a switch statement.
+

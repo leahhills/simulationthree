@@ -6,7 +6,8 @@ class Login extends Component{
     render(){
         return(
             <div>
-                What?
+                <img src={ loginlogo } alt="blinking smileyface" />
+                <a href={ process.env.REACT_APP_LOGIN }><button type ="" classname ="">Login/Register</button></a>
             </div>
         )
     }
