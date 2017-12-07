@@ -5,6 +5,8 @@ import LandingPage from './components/LandingPage/LandingPage';
 import Profile from './components/Profile/Profile';
 import Search from './components/Search/Search';
 
+
+
 export default(
     <Switch>
         <Route exact path='/' component ={ Login  } />

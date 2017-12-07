@@ -106,9 +106,9 @@ How does it do this exactly?
 
 Component initiating change informs the store. In order to    reflect that change or how that data should change the store uses a special function called a REDUCER(To be contn below).
 
-reducer takes current state of application, it must take an action(indicates the change that has occured) and how should that state change? And what will be our new state?
+reducer takes current state of application, it must take an action(indicates the change that has occurred) and how should that state change? And what will be our new state?
 
-It's job is to take the state of the application and an action which will indicate the  that has occured and then will return an entirely new state that reflects the changes in the application. Pure function in js.
+It's job is to take the state of the application and an action which will indicate the  that has occurred and then will return an entirely new state that reflects the changes in the application. Pure function in js.
 
 STORE
 store will keep track of those changes, and when something has changed, it will also notify components that something has changed and you should update to reflect that.

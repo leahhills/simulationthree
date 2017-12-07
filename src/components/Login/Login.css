@@ -1,0 +1,40 @@
+.main_background{
+    width:100%;
+    height: 1000px;
+    position: absolute;
+    background: linear-gradient(97deg,#ff70a6,#ff9770 40%,#ffd670 73%,#e9ff70);
+}
+.login_box{
+    width:400px;
+    height:300px;
+    margin-top:250px;
+    margin-left:500px;
+    position: absolute;
+    padding:40px;
+    border-radius: 10px;
+    background: linear-gradient(97deg,#bb6952,#d68d4c,);
+    box-shadow: 0 10px 20px 0 rgba(0,0,0,0.2), 0 6px 6px 0 rgba(0,0,0,0.2);
+}
+
+.logo{
+    width:114px;
+    height:114px;
+    margin-left:150px;
+    background-image: url('./../../loginlogo.png');
+}
+.login_button{
+    width:350px;
+    height:45px;
+    margin-top:20px;
+    color:white;
+    font-size:20px;
+    border-radius: 3px;
+    border:none;
+    background:#403d39;
+}
+.helo{
+    margin-top:25px;
+    font-size:90px;
+    color:white;
+    font-weight: 900;
+}
