@@ -35,7 +35,20 @@ passport.use(new Auth0Strategy({
     },
     (accessToken, refreshToken, extraParams, profile, done) => {
         const db = app.get('db');
-        const userData = profile._json;
+        console.log(profile);
+        console.log(profile._json.identities);
+        console.log('PROFILE YO',profile);
+        db.find_user(profile._json.identities[0].id)
+        .then(  (user)=>{
+            if(user[0]) return done(null,user[0].id);
+            else{
+                const user = profile._json;
+                db.create_user([user.username, user.password,auth_id])
+                .then(user=>(null,user[0].id));
+            }
+
+        })
+        
 
         return done(null, profile);
     
@@ -43,18 +56,23 @@ passport.use(new Auth0Strategy({
 
 
 
-passport.serializeUser((user, done)=>{
-    done(null,user);
+passport.serializeUser((id, done)=>{
+    done(null,id);
 })
 
-passport.deserializeUser((user, done)=>{
-    done(null, user);
+passport.deserializeUser((id, done)=>{
+    done(null, id);
 })
 
 app.get('/auth', passport.authenticate('auth0'));
 
-
-app.get('/auth/callback', passport.authenticate('auth0', { successRedirect: `http://localhost:${process.env.SERVER_PORT || 3008}/` }))
+console.log(process.env.port); 
+app.get('/auth/callback', passport.authenticate('auth0', 
+    
+    { successRedirect: `http://localhost:${process.env.SERVER_PORT || 3008}` 
+    // failureRedirect:  `http://localhost:/`  
+    
+}))
 
 //an endpoint that returns a 404 if theres no user and 200 if there is.
 app.get('/api/user',(req, res)=>{

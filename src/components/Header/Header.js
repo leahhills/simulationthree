@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Header from './../Header/Header';
+import './Header.css';
 
-export default class LandingPage extends Component{
+export default class Header extends Component{
     render(){
         return(
             <div>
-                <Header/>
+               Howdy partner! 
             </div>
         )
     }
