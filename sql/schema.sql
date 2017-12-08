@@ -6,8 +6,8 @@ DROP TABLE IF EXISTS Users;
 CREATE TABLE Users(
     id SERIAL PRIMARY KEY,
     username TEXT NOT NULL,
-    password TEXT NOT NULL,
-    authid TEXT NOT NULL
+    password TEXT,
+    auth_id TEXT NOT NULL
 );
 
 CREATE TABLE Qualities(

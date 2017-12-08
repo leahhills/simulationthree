@@ -25,6 +25,7 @@ app.use(passport.session());
 
 massive(process.env.CONNECTION_STRING).then((db)=>{
     app.set('db',db);
+    console.log('database connected');
 })
 
 passport.use(new Auth0Strategy({
@@ -36,15 +37,16 @@ passport.use(new Auth0Strategy({
     (accessToken, refreshToken, extraParams, profile, done) => {
         const db = app.get('db');
         console.log(profile);
-        console.log(profile._json.identities);
+        console.log(profile.identities);
         console.log('PROFILE YO',profile);
         db.find_user(profile._json.identities[0].id)
         .then(  (user)=>{
             if(user[0]) return done(null,user[0].id);
             else{
                 const user = profile._json;
-                db.create_user([user.username, user.password,auth_id])
-                .then(user=>(null,user[0].id));
+                db.create_user([user.name, user.password,user.user_id])
+                .then(user=>(null,user[0].id))
+                .catch(err=>{console.log('that didntwork',err)})
             }
 
         })
