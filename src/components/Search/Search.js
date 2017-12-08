@@ -7,6 +7,7 @@ export default class Search extends Component {
         return (
           <div>
               <Header/>
+              I'm the Search page. This is where you will find a friends list.
           </div>  
         );
     }

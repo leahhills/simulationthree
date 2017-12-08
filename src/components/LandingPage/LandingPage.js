@@ -6,6 +6,7 @@ export default class LandingPage extends Component{
         return(
             <div>
                 <Header/>
+                Here i am. I am the landing page.
             </div>
         )
     }

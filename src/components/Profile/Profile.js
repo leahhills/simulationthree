@@ -7,6 +7,8 @@ export default class Profile extends Component {
         return (
           <div>
               <Header/>
+
+              Gueeess what i'm the profile page.
           </div>  
         );
     }
