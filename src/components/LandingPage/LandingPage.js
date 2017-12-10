@@ -1,30 +1,284 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Header from './../Header/Header';
 import './LandingPage.css';
 import dogpic from './../../pictures/dogpic.jpg'
 
-export default class LandingPage extends Component{
-    render(){
-        return(
+export default class LandingPage extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            friendsList: [
+                {
+                    id: 1,
+                    name: 'Margarat Jamiesrs'
+                },
+
+                {
+                    id: 2,
+                    name: 'Xena Ryan'
+                }, 
+                
+                {
+                    id: 3,
+                    name: 'Tim Boner'
+                },
+                
+                {
+                    id: 4,
+                    name: 'Jackal Manners'
+                },
+                
+                {
+                    id: 5,
+                    name: 'Pizza Bob'
+                },
+                
+                {
+                    id: 6,
+                    name: 'Larry Man Dan'
+                },
+                
+                {
+                    id: 7,
+                    name: 'Puipy The Xena2'
+                },
+                
+                {
+                    id: 8,
+                    name: 'Kitty Yes'
+                },
+                   
+                {
+                    id: 9,
+                    name: 'Jackal Manners'
+                }, 
+                
+                
+                {
+                    id: 10,
+                    name: 'Pizza Bob'
+                }, 
+                
+                {
+                    id: 11,
+                    name: 'Larry Man Dan'
+                }, 
+                
+                {
+                    id: 12,
+                    name: 'Puipy The Xena2'
+                },
+                
+                {
+                    id: 13,
+                    name: 'Puipy The Xena2'
+                }, 
+                
+                {
+                    id: 14,
+                    name: 'Kitty Yes'
+                },
+                   
+                {
+                    id: 15,
+                    name: 'Jackal Manners'
+                }, 
+                
+                {
+                    id: 16,
+                    name: 'Pizza Bob'
+                }, 
+                
+                {
+                    id: 17,
+                    name: 'Larry Man Dan'
+                },
+                
+                {
+                    id: 18,
+                    name: 'Puipy The Xena2'
+                },
+                
+                
+                {
+                    id: 19,
+                    name: 'Margarat Jamiesrs'
+                }, 
+                
+                
+                {
+                    id: 20,
+                    name: 'Xena Ryan'
+                },
+
+                {
+                    id: 21,
+                    name: 'Tim Boner'
+                },
+                
+                {
+                    id: 22,
+                    name: 'Jackal Manners'
+                },
+                
+                {
+                    id: 23,
+                    name: 'Pizza Bob'
+                }, 
+                
+                {
+                    id: 24,
+                    name: 'Larry Man Dan'
+                },
+                    
+                {
+                    id: 25,
+                    name: 'Puipy The Xena2'
+                },
+                
+                {
+                    id: 26,
+                    name: 'Kitty Yes'},
+                       
+                {
+                    id: 27,
+                    name: 'Jackal Manners'
+                }, 
+                    
+                {
+                    id: 28,
+                    name: 'Pizza Bob'
+                },
+                
+                {
+                    id: 29,
+                    name: 'Larry Man Dan'
+                },
+                
+                {
+                    id: 30,
+                    name: 'Puipy The Xena2'
+                },
+                
+                {
+                    id: 31,
+                    name: 'Puipy The Xena2'
+                }, 
+                
+                {
+                    id: 32,
+                    name: 'Kitty Yes'
+                },
+                       
+                {
+                    id: 34,
+                    name: 'Jackal Manners'
+                }, 
+                
+                {
+                    id: 35,
+                    name: 'Pizza Bob'
+                },
+                
+                {
+                    id: 36,
+                    name: 'Larry Man Dan'
+                },
+                
+                {
+                    id: 37,
+                    name: 'Puipy The Xena2'
+                }
+
+            ]
+        }
+    }
+
+    render() {
+        const friendsListElement = this.state.friendsList.map(friend => {
+            return (
+                <div className="friendsListItem">
+                    <div className="test-picture"></div>
+                    <div className="friendsListItemName">{ friend.name }</div>
+                    <button className="add_friend_button">Add Friend</button>  
+                </div>
+            );
+        });
+
+        return (
             <div className="main_dashboard">
-                <Header className="header"/>
-                {/* Here i am. I am the landing page. */}
+                <Header className="header"/> {/* Here i am. I am the landing page. */}
 
                 <div className="profile_container">
 
                     <div className="profile_edit">
                         <img src={ dogpic } alt="dogfog" className="dogpic"/>
                         <button className="edit_button">Edit Profile</button>
-                    </div>  
+                    </div>
 
-                    <div className="welcome_box">Welcome to Helo! Find recommended friends based on your similarities, and even search for them by name. The more you update your profile, the better recommendations we can make!</div>
+                    <div className="welcome_box">Welcome to Helo! Find recommended friends based on
+                        your similarities, and even search for them by name. The more you update your
+                        profile, the better recommendations we can make!</div>
 
                 </div>
 
                 <div className="reccomended_friends">
-                    <h2 className="recfriends_header">Reccomended Friends</h2>
-                    Puppy kitty ipsum dolor sit good dog foot stick canary. Teeth Mittens grooming vaccine walk swimming nest good boy furry tongue heel furry treats fish. Cage run fast kitten dinnertime ball run foot park fleas throw house train licks stick dinnertime window. Yawn litter fish yawn toy pet gate throw Buddy kitty wag tail ball groom crate ferret heel wet nose Rover toys pet supplies. Bird Food treats tongue lick teeth ferret litter box slobbery litter box crate bird small animals yawn small animals shake slobber gimme five toys polydactyl meow. Turtle cage lazy cat foot lazy cat groom canary window tooth brush bedding lazy cat pet supplies turtle water dog shake pet supplies kitty. Walk bird harness wet nose meow harness grooming water dog lol catz water bedding toys bird seed fetch lazy cat. Parakeet scratcher brush biscuit lick dog tooth walk food lazy cat biscuit. Cockatiel Snowball kitten Rover ferret puppy.Pet Food pet supplies gimme five puppy cage food feathers food heel feathers running pet gate walk lazy dog Spike. Good Boy park lazy dog walk kibble Scooby snacks licks canary. Maine Coon Cat walk catch water dog slobber chew scratcher ID tag litter tuxedo dog house lazy cat park. Dinnertime fetch throw feathers fleas tongue lazy cat lick throw kitten parrot hamster wag tail aquarium chew heel good boy lick feathers cockatiel. Wet Nose food ferret vaccine finch vaccination Scooby snacks string wagging barky tail head good boy pet gate meow good boy. Commands shake bird biscuit left paw finch bark ferret bark gimme five turtle fur canary. Water puppy dog lick kisses pet supplies slobber cat bird seed. Food sit biscuit groom tongue cage.Play Dead sit nap lazy dog wet nose Tigger run fast fish lazy cat wagging hamster toy field yawn feathers ferret yawn aquarium.Feathers bird seed food scratcher mouse running teeth licks heel walk pet gate maine coon cat collar twine parakeet. Roll Over kitty barky critters litter stick window litter box wagging field toy. Whiskers harness biscuit food lick small animals throw meow house train. Bedding field hamster small animals carrier polydactyl groom vaccine. Commands running gimme five groom slobber run fast head ball litter box biscuit catch run fast roll over. Roll Over litter box tabby pet slobbery play dead kitty roll over small animals barky good boy string kitty fish licks teeth chew drool. ID Tag barky lick parakeet wet nose ball walk tabby wag tail chirp nest. Spike bird seed water teeth leash ball. Crate pet food stripes carrier drool slobbery tabby dog puppy birds walk roll over bird food Mittens pet supplies.
-            
+
+                    <div className="recmd_section">
+
+                    <div className="recfriends_header">
+                        
+                        <span className="span_reccmd"> Recommended Friends</span>
+                   
+                    <span className="span_list"> Sorted by <noindex></noindex>
+                    <select className="span_list_items">
+                        <option value="first">Last Name</option>
+                        <option value="last">First Name</option>
+                        <option value="gender">Gender</option>
+                        <option value="hobby">Hobby</option>
+                        <option value="h_color">Hair Color</option>
+                        <option value="e_color">Eye Color</option>
+                        <option value="birthday">Birthday</option>
+                    </select>
+                    </span>
+                   </div>
+
+
+
+
+{/* 
+                        <div class="dropdown">
+                            <button
+                                class="btn btn-primary dropdown-toggle"
+                                type="button"
+                                data-toggle="dropdown">
+                                <id>Category
+                                </id>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">HTML</a>
+                                </li>
+                                <li>
+                                    <a href="#">CSS</a>
+                                </li>
+                                <li>
+                                    <a href="#">JavaScript</a>
+                                </li>
+                            </ul>
+                        </div> */}
+
+                    
+
+                    <section>
+                        <div className="scrollable_list">
+                            { friendsListElement }
+                        </div>
+                    </section>
+
+                    </div>
                 </div>
 
             </div>

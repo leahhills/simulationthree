@@ -1,5 +1,8 @@
+body{
+  height:auto;
+}
+
 .App {
-  height: auto;
   display:block;
 }
 

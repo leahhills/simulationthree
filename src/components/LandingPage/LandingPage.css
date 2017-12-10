@@ -1,16 +1,30 @@
 .main_dashboard{
-/* width:100%;
-min-width: 1200px;
-min-height: 100vh;
-display: flex;
-justify-content: center; */
+/* width:100%; */
+/* min-width: 1200px; */
+/* min-height: 100vh; */
+/* display: flex; */
+/* justify-content: center; */
 
+}
+
+
+.add_friend_button{
+    font-size:14px;
+    color:white;
+    padding:10px 10px 10px 10px;
+    margin:5px 20px 5px 20px;
+    border:none;
+    border-radius:1px;
+    background-image:radial-gradient(circle at 50%-46%, #ff9770,#ff7a6e);
+    box-shadow:0 1px 3px 0 rgba(0,0,0,0.1),0,1px 2px 0 rgba(0,0,0,0.2);
+    height: 35px;
+    width: 100px;
 }
 
 .profile_container{
- display: flex;
- justify-content: center;
-}
+    display: flex;
+    justify-content: center;
+  }
 
 .dogpic{
     width: 50%;
@@ -28,48 +42,142 @@ justify-content: center; */
 }
 
 .profile_edit{
- width:321px;
- height: 150px;
- background-color:#ffffff;
- display:flex;
- border-radius:2px,2px,2px,2px;
- box-shadow:0 1px 3px 0
- rgba(0,0,0,0.1), 0 1px 2px 0
- rgba(0,0,0,0.2);
+    width: 321px;
+    height: 150px;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.2);
+    display: flex;
 }
 
 .recfriends_header{
     font-weight: normal;
     /* color:grey; */
+    justify-content: space-around;
+
     
 }
 
 
 .welcome_box{
- margin-left:20px;
- width:500px;
- height: 150px;
- background-color:#ffffff;
- display:flex;
- border-radius:2px;
- box-sizing:border-box;
- box-shadow:0 1px 3px 0
- rgba(0,0,0,0.1), 0 1px 2px 0
- rgba(0,0,0,0.2);
- padding:15px;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.2);
+    width: 500px;
+    height: 150px;
+    display: flex;
+    margin-left: 20px;
+    box-sizing: border-box;
+    padding: 15px;
 }
 
 .reccomended_friends{
+    width: 100%;
+    height: auto;
+    min-height: 200px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 500px;
+    justify-content:space-around;
+
+}
+.recmd_section{
+ 
+
+
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.2);
+    width: 841px;
+
+
+    display: block;
+
+}
+.span_reccmd{
+    font-size:25px;
+    margin-right:300px;
+}
+.span_list{
+   /* justify-content:flex-end; */
+   
+    font-size:17px;
+   
+ } 
+
+ .span_list_items{
+
+ }
+
+.scrollable_list{
+    height: 500px;
+    width:100%;
+    overflow: auto;
+    overflow-y:scroll;
+    flex-wrap: wrap;
+    list-style: none;
+    display:flex;
+    justify-content: space-between;
+}
+.dashbrd_rec-select{
     
- margin-left:20px;
- width:100%;
- height: 50%;
- background-color:#ffffff;
- /* display:flex; */
- border-radius:2px;
- box-sizing:border-box;
- box-shadow:0 1px 3px 0
- rgba(0,0,0,0.1), 0 1px 2px 0
- rgba(0,0,0,0.2);
- padding:50px 50px 50px 50px;
+
+    font-weight: 400;
+
+    position: absolute;
+    right: 10px;
+    font-size: 18px;
+    width: 130px;
+    overflow: visible !important;
+    border-radius: 0px;
+    border-color: rgb(169, 169, 169);
+
+    -webkit-appearance: menulist;
+    box-sizing: border-box;
+    align-items: center;
+    white-space: pre;
+    -webkit-rtl-ordering: logical;
+    color: black;
+    background-color: white;
+    cursor: default;
+    border-width: 1px;
+    border-style: solid;
+    border-image: initial;
+
+    border-radius: 5px;
+
+
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    -webkit-writing-mode: horizontal-tb;
+}
+
+.friendsListItem {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #B4B4B4;
+    width: 50%;
+}
+
+.test-picture {
+    height: 80px;
+    width: 80px;
+    background-color: #D23175
+}
+
+.friendsListItemName {
+    font-size: 1.3em;
+    padding: 5px;
 }
