@@ -71,7 +71,9 @@ app.get('/auth', passport.authenticate('auth0'));
 console.log(process.env.port); 
 app.get('/auth/callback', passport.authenticate('auth0', 
     
-    { successRedirect: `http://localhost:${process.env.SERVER_PORT || 3008}` 
+    { successRedirect:`http://localhost:3000/landingpage`,
+        failureRedirect: `http://localhost:3000/`
+        // successRedirect: `http://localhost:${process.env.SERVER_PORT || 3008}` 
     // failureRedirect:  `http://localhost:/`  
     
 }))
