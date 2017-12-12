@@ -15,9 +15,16 @@ export default class Profile extends Component {
                     <div className="profile_child">
                         
                         <div className="user_content_header">
-                            <img src={ dogpic } alt="supposed to be a robot pic"className="profile_img"/>
-                            <button className="update_button">Update</button>
-                            <button className="cancel_button">Cancel</button>
+                            
+                                <img src={ dogpic } alt="supposed to be a robot pic"className="profile_img"/>
+                                <div className="profile_username_container">
+                                    Billy Bob Thornton
+                                </div>
+                            <div className="button_container">
+                                <button className="update_button">Update</button>
+                                <button className="cancel_button">Cancel</button>
+                            </div>
+                        
                         </div>
 
                         <div className="user_select_options">
@@ -32,7 +39,7 @@ export default class Profile extends Component {
 
 
                 </div>
-              Gueeess what i'm the profile page.
+              
           </div>  
         );
     }
