@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import HeaderLanding from './../Headers/HeaderLanding/HeaderLanding';
 import './LandingPage.css';
 import dogpic from './../../pictures/dogpic.jpg'
+import { Link } from 'react-router-dom';
 
 export default class LandingPage extends Component {
     constructor(props) {

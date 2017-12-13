@@ -9,12 +9,19 @@ export default class Header extends Component{
         return(
         
             <div className="header_bar_main">
-               <section className="header_helo">Helo</section>
-                <img src={ homeiconforsim3 } alt="this is a home icon logo" className="home_logo"/>
-                   
-                <img src={ searchsim } alt="this is a magnifying glass logo" className="search_logo"/>
 
+               <section className="header_helo">Helo</section>
+               
+            <Link to="/landingpage">
+                <img src={ homeiconforsim3 } alt="this is a home icon logo" className="home_logo"/>
+            </Link>
+            
+            <Link to ="/search"> 
+                <img src={ searchsim } alt="this is a magnifying glass logo" className="search_logo"/>
+            </Link>
+                
                 <span className="profile_title_header">Profile</span>
+            
             <Link to ="/" style ={{textDecoration: 'none'}}>
                 <section className="header_logout">Logout</section>
             </Link>
