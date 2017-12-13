@@ -86,3 +86,17 @@ padding:1px 6px;
     width: 841px;
     box-sizing: border-box;
 }
+
+.user_select_options_child{
+    width:80%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.select_options_left{
+    display:block;
+}
+
+.select_options_right{
+    display:block;
+}
