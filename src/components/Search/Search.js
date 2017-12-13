@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header from './../Header/Header';
+import HeaderSearch from './../Headers/HeaderSearch/HeaderSearch';
 import './Search.css';
 
 export default class Search extends Component {
@@ -205,7 +205,7 @@ export default class Search extends Component {
 
         return (
           <div>
-              <Header/>
+              <HeaderSearch/>
              
               
               <div className="search_parent">

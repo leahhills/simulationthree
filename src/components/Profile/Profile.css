@@ -93,10 +93,203 @@ padding:1px 6px;
     justify-content: space-around;
 }
 
+
+
+/* User selected options on left side */
+
 .select_options_left{
     display:block;
 }
 
+
+
+
+.firstname_section{
+display: flex;
+flex-direction:column;
+}
+
+.firstname_title{
+font-size: 18px;
+font-weight: 100;
+box-sizing: border-box;
+padding-left:15px;
+margin-bottom:3px;
+}
+
+.firstname_input{
+font-weight: 400;
+border:1px solid #ff9770;
+font-size:20px;
+padding:6px;
+margin-bottom:10px;
+box-sizing: border-box;
+}
+
+
+
+.lastname_section{
+    display: flex;
+    flex-direction:column;
+}
+
+.lastname_title{
+    font-size: 18px;
+    font-weight: 100;
+    box-sizing: border-box;
+    padding-left:15px;
+    margin-bottom:3px;
+}
+
+.lastname_input{
+    font-weight: 400;
+    border:1px solid #ff9770;
+    font-size:20px;
+    padding:6px;
+    margin-bottom:10px;
+    box-sizing: border-box;
+}
+
+
+.gender_section{
+display: flex;
+flex-direction:column;
+}
+
+.gender_title{
+font-size:20px;
+font-weight: 400;
+box-sizing: border-box;
+padding-left:15px;
+margin-bottom:3px;
+}
+
+.gender_options{
+width:225px;
+font-size:20px;
+margin-bottom:10px;
+border-radius:0px;
+border-color:rgb(169,169,169);
+}
+
+
+
+.haircolor_section{
+    display: flex;
+    flex-direction:column;
+}
+
+.haircolor_title{
+    font-size:20px;
+    font-weight: 400;
+    box-sizing: border-box;
+    padding-left:15px;
+    margin-bottom:3px;
+}
+
+.haircolor_options{
+    width:225px;
+    font-size:20px;
+    margin-bottom:10px;
+    border-radius:0px;
+    border-color:rgb(169,169,169);
+}
+
+
+
+.eyecolor_section{
+    display: flex;
+    flex-direction:column;
+}
+
+.eyecolor_title{
+    font-size:20px;
+    font-weight: 400;
+    box-sizing: border-box;
+    padding-left:15px;
+    margin-bottom:3px;
+}
+.eyecolor_options{
+    width:225px;
+    font-size:20px;
+    margin-bottom:10px;
+    border-radius:0px;
+    border-color:rgb(169,169,169);
+}
+
+
+
+/* User selected options on the right side */
+
 .select_options_right{
     display:block;
 }
+
+
+.hobby_select_section{
+    display: flex;
+    flex-direction:column;
+}
+
+.hobby_title{
+    font-size:20px;
+    font-weight: 400;
+    box-sizing: border-box;
+    padding-left:15px;
+    margin-bottom:3px;
+}
+
+.hobby_select_options{
+    width:225px;
+    font-size:20px;
+    margin-bottom:10px;
+    border-radius:0px;
+    border-color:rgb(169,169,169);
+}
+
+
+
+.birthday_day_section{
+    display: flex;
+    flex-direction:column;
+}
+
+.birthday_title{
+    font-size:20px;
+    font-weight: 400;
+    box-sizing: border-box;
+    padding-left:15px;
+    margin-bottom:3px;
+}
+
+.birthday_day_options{
+    width:225px;
+    font-size:20px;
+    margin-bottom:10px;
+    border-radius:0px;
+    border-color:rgb(169,169,169);
+}
+
+
+
+.birthday_month_section{
+    display: flex;
+    flex-direction:column;
+}
+
+.birthmonth_title{
+    font-size:20px;
+    font-weight: 400;
+    box-sizing: border-box;
+    padding-left:15px;
+    margin-bottom:3px;
+}
+
+.birthday_month_options{
+    width:225px;
+    font-size:20px;
+    margin-bottom:10px;
+    border-radius:0px;
+    border-color:rgb(169,169,169);
+}
+

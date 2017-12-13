@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Header from './../Header/Header';
-import './../Header/Header.css';
+import HeaderProfile from './../Headers/HeaderProfile/HeaderProfile';
 import './Profile.css';
 import dogpic from './../../pictures/dogpic.jpg';
 
@@ -9,7 +8,7 @@ export default class Profile extends Component {
     render() {
         return (
           <div>
-              <Header/>
+              <HeaderProfile/>
                 <div className="profile_parent">
 
                     <div className="profile_child">
@@ -42,13 +41,13 @@ export default class Profile extends Component {
                                 <div className="select_options_left">
                                     
                                     <div className="firstname_section">
-                                        <span className="firstname_title">First Name:</span>
-                                            <input type="text"/>
+                                        <span className="firstname_title">First Name</span>
+                                            <input type="text" className="firstname_input"/>
                                     </div>
                                     
                                     <div className="lastname_section">
-                                        <span className="lastname_title" >Last Name:</span>
-                                            <input type="text"/>
+                                        <span className="lastname_title" >Last Name</span>
+                                            <input type="text" className="lastname_input"/>
                                     </div>
 
                                     <div className="gender_section">

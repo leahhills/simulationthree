@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Header from './../Header/Header';
+import HeaderLanding from './../Headers/HeaderLanding/HeaderLanding';
 import './LandingPage.css';
 import dogpic from './../../pictures/dogpic.jpg'
 
@@ -208,7 +208,7 @@ export default class LandingPage extends Component {
 
         return (
             <div className="main_dashboard">
-                <Header className="header"/> {/* Here i am. I am the landing page. */}
+                <HeaderLanding className="header"/> {/* Here i am. I am the landing page. */}
 
                 <div className="profile_container">
 
