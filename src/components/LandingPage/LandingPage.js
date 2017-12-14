@@ -194,13 +194,14 @@ export default class LandingPage extends Component {
 
             ]
         }
+        
     }
 
     render() {
         const friendsListElement = this.state.friendsList.map(friend => {
             return (
                 <div className="friendsListItem">
-                    <div className="test-picture"></div>
+                    <div className="test_picture"></div>
                     <div className="friendsListItemName">{ friend.name }</div>
                     <button className="add_friend_button">Add Friend</button>  
                 </div>
@@ -208,14 +209,30 @@ export default class LandingPage extends Component {
         });
 
         return (
-            <div className="main_dashboard">
-                <HeaderLanding className="header"/> {/* Here i am. I am the landing page. */}
+            
+            
+
+            <div className="landing_page_parent">
+
+
+
+                
+                <div className="header_component">                
+                    <HeaderLanding />
+                </div>
+
+
+            <div className="landing_page_child">
 
                 <div className="profile_container">
 
                     <div className="profile_edit">
                         <img src={ dogpic } alt="dogfog" className="dogpic"/>
-                        <button className="edit_button">Edit Profile</button>
+                        
+                        <Link to="/profile">    
+                            <button className="edit_button">Edit Profile</button>
+                        </Link>
+                        
                     </div>
 
                     <div className="welcome_box">Welcome to Helo! Find recommended friends based on
@@ -224,16 +241,17 @@ export default class LandingPage extends Component {
 
                 </div>
 
-                <div className="reccomended_friends">
 
-                    <div className="recmd_section">
+
+                <div className="reccomended_friends_parent">
+
+                    <div className="recmd_section_child">
 
                     <div className="recfriends_header">
                         
-                        <span className="span_reccmd"> Recommended Friends</span>
-                   
-                    <span className="span_list"> Sorted by <noindex></noindex>
-                    <select className="span_list_items">
+                        <span className="friends_title"> Recommended Friends</span>
+                        <span className="sortedby_header"> Sorted by  </span>
+                    <select className="sortedby_options">
                         <option value="first">Last Name</option>
                         <option value="last">First Name</option>
                         <option value="gender">Gender</option>
@@ -242,45 +260,27 @@ export default class LandingPage extends Component {
                         <option value="e_color">Eye Color</option>
                         <option value="birthday">Birthday</option>
                     </select>
-                    </span>
+                  
                    </div>
 
 
 
 
-{/* 
-                        <div class="dropdown">
-                            <button
-                                class="btn btn-primary dropdown-toggle"
-                                type="button"
-                                data-toggle="dropdown">
-                                <id>Category
-                                </id>
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="#">HTML</a>
-                                </li>
-                                <li>
-                                    <a href="#">CSS</a>
-                                </li>
-                                <li>
-                                    <a href="#">JavaScript</a>
-                                </li>
-                            </ul>
-                        </div> */}
 
                     
 
-                    <section>
+                    
                         <div className="scrollable_list">
                             { friendsListElement }
                         </div>
-                    </section>
+                  
 
                     </div>
                 </div>
+
+
+            </div>
+
 
             </div>
         )
