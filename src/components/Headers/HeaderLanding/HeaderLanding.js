@@ -20,9 +20,9 @@ export default class Header extends Component{
                 </Link> 
 
                 <span className="landing_title_header">Dashboard</span>
-            <Link to ="/" style ={{textDecoration: 'none'}}>
-                <section className="header_logout">Logout</section>
-            </Link>
+            {/* <Link to ="/" style ={{textDecoration: 'none'}}> */}
+                <a href={ process.env.REACT_APP_LOGOUT} className="header_logout">Logout</a>
+            {/* </Link> */}
                
             </div>
         )

@@ -9,3 +9,7 @@ const initialState={
 export default function reducer(state = initialState,action){
     
 }
+
+
+//reducer takes in actions and state and returns a new state!!For 
+//every reducer you have in app you want one js file for it.

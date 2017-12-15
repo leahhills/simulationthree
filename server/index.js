@@ -4,11 +4,12 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const massive = require('massive');
 const session = require('express-session');
+// const endpoints = require('./endpoints');
 
 
 const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
-var app = express();
+const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended:true }));
@@ -23,10 +24,19 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+
+// endpoints.buildEndpoints(app);
+
 massive(process.env.CONNECTION_STRING).then((db)=>{
     app.set('db',db);
     console.log('database connected');
 })
+
+
+
+
+
 
 passport.use(new Auth0Strategy({
         domain: process.env.AUTH0_DOMAIN,
@@ -39,7 +49,7 @@ passport.use(new Auth0Strategy({
         console.log(profile);
         console.log(profile.identities);
         console.log('PROFILE YO',profile);
-        db.find_user(profile._json.identities[0].id)
+        db.find_user([profile.identities[0].user_id])
         .then(  (user)=>{
             if(user[0]) return done(null,user[0].id);
             else{
@@ -56,26 +66,38 @@ passport.use(new Auth0Strategy({
     
 }));
 
+// app.get("/auth", passport.authenticate("auth0"));
+// app.get(
+//   "/auth/callback",
+//   passport.authenticate("auth0", {
+//     successRedirect: "http://localhost:3000/landingpage", //redirecting to dashboard
+//     failureRedirect: "/auth"
+//   })
+// );
+// app.get("/auth/me", (req, res) => {
+//   if (!req.user) {
+//     return res.status(404).send("User Not Found");
+//   } else {
+//     return res.status(200).send(req.user);
+//   }
+// });
 
+// app.get("/auth/logout", (req, res) => {
+//   req.logOut();
+//   res.redirect(200, "http://localhost:3000");
+// });
 
-passport.serializeUser((id, done)=>{
-    done(null,id);
-})
-
-passport.deserializeUser((id, done)=>{
-    done(null, id);
-})
 
 app.get('/auth', passport.authenticate('auth0'));
 
 console.log(process.env.port); 
 app.get('/auth/callback', passport.authenticate('auth0', 
-    
-    { successRedirect:`http://localhost:3000/landingpage`,
-        failureRedirect: `http://localhost:3000/`
-        // successRedirect: `http://localhost:${process.env.SERVER_PORT || 3008}` 
-    // failureRedirect:  `http://localhost:/`  
-    
+
+{ successRedirect:`http://localhost:3000/landingpage`,
+failureRedirect: `http://localhost:3000/`
+// successRedirect: `http://localhost:${process.env.SERVER_PORT || 3008}` 
+// failureRedirect:  `http://localhost:/`  
+
 }))
 
 //an endpoint that returns a 404 if theres no user and 200 if there is.
@@ -90,16 +112,30 @@ app.get('/api/user',(req, res)=>{
 //logout
 
 
+app.get("/auth/logout", (req, res) => {
+    req.logOut();
+    res.redirect(302, "/auth");
+});
+
+passport.serializeUser((id, done)=>{
+    done(null,id);
+})
+
+passport.deserializeUser((id, done)=>{
+    app.get('db').find_user([id])
+    .then((user)=>{
+        done(null, user[0]);
+
+    });
+});
 
 
 
 
 
-
-
-
+const PORT =3005;
 app.listen(process.env.SERVER_PORT, function(){
-    console.log(`listening on port ${process.env.SERVER_PORT}`)
+    console.log(`listening on port ${PORT}`)
 })
 
 

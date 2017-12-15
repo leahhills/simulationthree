@@ -1,2 +1,2 @@
 SELECT * FROM Users
-WHERE Auth_ID =$1;
+WHERE auth_id =$1;
