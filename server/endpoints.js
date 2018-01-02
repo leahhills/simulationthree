@@ -1,11 +1,12 @@
+const recommendedController = require('./controller/recommendedController');
 // where I will put the different controllers also need to put the sql methods that will be executed here.
 // const recommended = require('./controller/recommendedController');
 module.exports = {
     buildEndPoints: (app)=>{
        
         //Reccomended endpoints
-        app.post('/api/recommended', recommendedController.findRec);
-        //app.post('/api/recommended/add', recommendedController.)
+        app.post('/api/recommended', recommendedController.getRecommended);
+        app.post('/api/recommended/add', recommendedController.addToFriendsList);
 
 /*
         //User endpoints

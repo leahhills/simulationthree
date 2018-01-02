@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const massive = require('massive');
 const session = require('express-session');
-// const endpoints = require('./endpoints');
+const endpoints = require('./endpoints');
 
 const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
@@ -106,6 +106,14 @@ passport.deserializeUser((id, done) => {
             done(null, _id);
         });
 });
+
+
+
+//reccomended endpoint check to see if work
+
+endpoints.buildEndPoints(app);
+
+
 
 app.listen(process.env.SERVER_PORT, function () {
     console.log(`listening on port ${process.env.SERVER_PORT}`)

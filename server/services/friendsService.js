@@ -1,5 +1,5 @@
 module.exports={
-    friendslist:{
+    friendsList:
         [
             {
                 id: 1,
@@ -184,5 +184,4 @@ module.exports={
             }
 
         ]
-    }
 }
