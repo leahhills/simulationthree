@@ -18,14 +18,21 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "^1.0.17",
     "redux": "^3.7.2",
-    "redux-promise-middleware": "^5.0.0"
+    "redux-promise-middleware": "^5.0.0",
+    "request": "^2.83.0"
   },
   "scripts": {
     "start-server": "nodemon server/index.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "test-express": "./node_modules/.bin/mocha server/test/*test.js --reporter spec",
     "eject": "react-scripts eject"
   },
-  "main": "./server/index.js"
+  "main": "./server/index.js",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^4.1.0"
+  }
 }
