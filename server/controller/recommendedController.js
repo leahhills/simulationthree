@@ -4,27 +4,37 @@
 const service = require('../services/friendsService');
 
 module.exports = {
+
     getRecommended: (req, res, next) => {
         const friendsList = service.friendsList;
         res.send(friendsList);
     },
+
     addToFriendsList:(req, res, next)=>{
         // get request body
-        const body = req.body;
-        const name = body.name;
         // get access to databaseInstance
-
-
+        const dbInstance = req.app.get('db');
+        const { firstname, lastname, gender, haircolor, eyecolor, hobby, birthday, birthmonth, birthyear } = req.body;
+        console.log('i am the req for add',req.body);
         // attempt to insert a new record into the database using the request body and the database instance
-
+        dbInstance.add_friendtolist(['', '', '',firstname, lastname, gender, haircolor, eyecolor, hobby, birthday, birthmonth, birthyear])
+        .then(response => {
+            console.log('response', response);
+            res.status(201).send('yay we have another one on friendlist');
+        })
+        .catch(err => {
+            console.log(' add error', err);
+            res.status(500).send(err);
+        });
+    }
         // if this was all successful, return a 201
 
         // if it was not successful, return a 500 (or a 400 if the request body data was bad)
 
         // placeholder code
-        return res.status(201).send('pooooooodoo');
+        // return res.status(201).send('pooooooodoo');
     }
-};
+
  
 
 

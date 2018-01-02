@@ -4,9 +4,9 @@ DROP TABLE IF EXISTS Users;
 
 CREATE TABLE Users(
     id SERIAL PRIMARY KEY,
-    username TEXT NOT NULL,
-    password TEXT,
-    auth_id TEXT NOT NULL,
+    username TEXT NULL,
+    password TEXT NULL,
+    auth_id TEXT NULL,
     firstname TEXT NULL,
     lastname TEXT NULL,
     gender TEXT NULL,
