@@ -1,4 +1,5 @@
 const recommendedController = require('./controller/recommendedController');
+const userController = require('./controller/userController');
 // where I will put the different controllers also need to put the sql methods that will be executed here.
 // const recommended = require('./controller/recommendedController');
 module.exports = {
@@ -10,7 +11,7 @@ module.exports = {
 
 
         //User endpoints
-        // app.patch('/api/user/patch/:id', userController.updateUser)
+         app.patch('/api/user/patch/:id', userController.updateQualities)
     /*  app.get('/api/user/list', userController.)
         app.get('/api/user/search', userController. )
 
