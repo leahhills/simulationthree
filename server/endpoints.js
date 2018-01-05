@@ -8,10 +8,10 @@ module.exports = {
         app.post('/api/recommended', recommendedController.getRecommended);
         app.post('/api/recommended/add', recommendedController.addToFriendsList);
 
-/*
+
         //User endpoints
-        app.patch('/api/user/patch/:id', userController.)
-        app.get('/api/user/list', userController.)
+        // app.patch('/api/user/patch/:id', userController.updateUser)
+    /*  app.get('/api/user/list', userController.)
         app.get('/api/user/search', userController. )
 
         //Friend endpoints

@@ -14,10 +14,10 @@ module.exports = {
         // get request body
         // get access to databaseInstance
         const dbInstance = req.app.get('db');
-        const { firstname, lastname, gender, haircolor, eyecolor, hobby, birthday, birthmonth, birthyear } = req.body;
+        const {firstname,lastname,gender,haircolor,eyecolor,hobby,birthday,birthmonth,birthyear} = req.body;
         console.log('i am the req for add',req.body);
         // attempt to insert a new record into the database using the request body and the database instance
-        dbInstance.add_friendtolist(['', '', '',firstname, lastname, gender, haircolor, eyecolor, hobby, birthday, birthmonth, birthyear])
+        dbInstance.add_friendtolist([firstname,lastname,gender,haircolor,eyecolor,hobby,birthday,birthmonth,birthyear])
         .then(response => {
             console.log('response', response);
             res.status(201).send('yay we have another one on friendlist');
