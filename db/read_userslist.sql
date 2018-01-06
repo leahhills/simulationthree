@@ -1,2 +1,2 @@
 SELECT * FROM Users
-WHERE id =$1;
+WHERE id <= 24;

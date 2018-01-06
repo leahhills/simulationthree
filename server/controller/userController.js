@@ -53,10 +53,12 @@ module.exports={
 
         getUserList:(req,res,next)=>{
             const dbInstance = req.app.get('db');
-            console.log('here is the request',req)
             const { id }= req.body;
             dbInstance.read_userslist([req.params.id,id])
-            .then(users=>res.status(200).send(users))
+            .then(response => {
+                console.log(response)
+                res.status(200).send(response);
+            })
             .catch(err=> res.status(500).send(err));
             
 

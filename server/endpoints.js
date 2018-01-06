@@ -11,8 +11,9 @@ module.exports = {
 
 
         //User endpoints
-         app.patch('/api/user/patch/:id', userController.updateQualities)
-    /*  app.get('/api/user/list', userController.)
+         app.patch('/api/user/patch/:id', userController.updateQualities);
+         app.get('/api/user/list', userController.getUserList);
+    /*  
         app.get('/api/user/search', userController. )
 
         //Friend endpoints
