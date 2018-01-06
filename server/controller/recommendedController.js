@@ -1,13 +1,13 @@
 /* ENDPOINT: '/api/recommended' */
 
 // friend service - this needs to be removed eventually when you get stuff from postgresql
-const service = require('../services/friendsService');
+// const service = require('../services/friendsService');
 
 module.exports = {
 
     getRecommended: (req, res, next) => {
-        const friendsList = service.friendsList;
-        res.send(friendsList);
+        // const friendsList = service.friendsList;
+        // res.send(friendsList);
     },
 
     addToFriendsList:(req, res, next)=>{

@@ -51,6 +51,10 @@ module.exports={
 
     },
 
+        getUserList:(req,res,next)=>{
+            const dbInstance = req.app.get('db');
+            
+},
     
 
 }
