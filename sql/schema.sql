@@ -98,6 +98,9 @@ INSERT INTO Users(
     birthday,
     birthyear)
 VALUES 
+    ('Garbyl','Homingy','Male','Blonde','Blue','Hiking','April',6,1997),
+    ('HubbityHUb','Beibs','Male','Brown','Blue','Video Games','February',18,2013),
+    ('Doly','Parton','Female','Blonde','Blue','Rafting','December',16,1990),
     ('Gabrielle','Xenasidekick','Female','Blonde','Blue','Rafting','May',18,1995),
     ('AddieSofia', 'KaraNoelle', 'Male','Red','Green','Video Games','April', 14, 1952),
     ('MikeVladimir', 'ArdenLexi', 'Female','Red','Blue','Fishing','February', 28, 1939),
