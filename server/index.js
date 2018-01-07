@@ -37,7 +37,7 @@ passport.use(new Auth0Strategy({
     // YO',profile);
     console.log('profile stuff', profile.identities[0].user_id);
     db
-        .find_user([profile.identities[0].user_id])
+        .find_auth_user([profile.identities[0].user_id])
         .then(user => {
             if (user[0]) 
                 return done(null, user[0].id);
@@ -100,7 +100,7 @@ passport.deserializeUser((id, done) => {
     console.log("DO I EVEN HAD A REAL ID", _id);
     app
         .get('db')
-        .find_user([_id])
+        .find_auth_user([_id])
         .then((user) => {
             console.log("DID I FIND USER?", user);
             done(null, _id);

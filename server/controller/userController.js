@@ -4,7 +4,7 @@ module.exports={
         const {firstname,lastname,gender,haircolor,eyecolor,hobby,birthday,birthmonth,birthyear} = req.body;
      console.log(req.params.id,firstname,lastname,gender,haircolor,eyecolor,hobby,birthday,birthmonth,birthyear);
 
-    dbInstance.find_user([req.params.id])
+    dbInstance.find_userfromlist([req.params.id])
     .then(response => {
         let currentUser = response[0];
         console.log('Current User Before Change', currentUser);
@@ -56,7 +56,13 @@ module.exports={
             const { id }= req.body;
             dbInstance.read_userslist([req.params.id,id])
             .then(response => {
-                console.log(response)
+                // if(id<=24)
+                //     return read_userslist;
+                // if
+                    
+
+
+                console.log(response);
                 res.status(200).send(response);
             })
             .catch(err=> res.status(500).send(err));
