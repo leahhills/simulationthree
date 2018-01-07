@@ -1,4 +1,5 @@
 module.exports = {
+
     updateQualities: (req, res, next) => {
         const dbInstance = req.app.get('db');
         const {
@@ -8,11 +9,11 @@ module.exports = {
             haircolor,
             eyecolor,
             hobby,
-            birthday,
             birthmonth,
+            birthday,
             birthyear
         } = req.body;
-        console.log(req.params.id, firstname, lastname, gender, haircolor, eyecolor, hobby, birthday, birthmonth, birthyear);
+        console.log(req.params.id, firstname, lastname, gender, haircolor, eyecolor, hobby, birthmonth,birthday,birthyear);
 
         dbInstance.find_userfromlist([req.params.id])
             .then(response => {
@@ -30,15 +31,15 @@ module.exports = {
                     currentUser.eyecolor = eyecolor;
                 if (hobby)
                     currentUser.hobby = hobby;
-                if (birthday)
-                    currentUser.birthday = birthday;
                 if (birthmonth)
                     currentUser.birthmonth = birthmonth;
+                if (birthday)
+                    currentUser.birthday = birthday;
                 if (birthyear)
                     currentUser.birthyear = birthyear;
                 console.log('Current User AFTER Change', currentUser);
 
-                dbInstance.update_user([req.params.id, currentUser.firstname, currentUser.lastname, currentUser.gender, currentUser.haircolor, currentUser.eyecolor, currentUser.hobby, currentUser.birthday, currentUser.birthmonth, currentUser.birthyear])
+                dbInstance.update_user([req.params.id, currentUser.firstname, currentUser.lastname, currentUser.gender, currentUser.haircolor, currentUser.eyecolor, currentUser.hobby, currentUser.birthmonth, currentUser.birthday, currentUser.birthyear])
                     .then(response => {
                         console.log('response from update', response)
                         res.status(200).send('yah we got updated');
@@ -81,5 +82,17 @@ module.exports = {
             .catch(err => {
                 res.status(500).send(err);
             });
+    },
+
+    findUsers:(req,res,next)=>{
+        const dbInstance = req.app.get('db');
+        const { firstName, lastName } = req.query;
+        dbInstance.find_matching_users([firstName, lastName])
+        .then(matchedUsers => {
+            res.status(200).send(matchedUsers);
+        })
+        .catch(err=> {
+            res.status(500).send(err);
+        });
     },
 }

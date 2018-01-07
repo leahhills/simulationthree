@@ -19,7 +19,7 @@ CREATE TABLE Users(
 );
 
 CREATE TABLE FriendList(
-    user_id INTEGER NOT NULL,
+    user_id TEXT NULL,
     friend_id INTEGER NOT NULL
 );
 

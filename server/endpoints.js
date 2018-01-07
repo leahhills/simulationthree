@@ -1,5 +1,6 @@
 const recommendedController = require('./controller/recommendedController');
 const userController = require('./controller/userController');
+const friendController = require('./controller/friendController');
 // where I will put the different controllers also need to put the sql methods that will be executed here.
 // const recommended = require('./controller/recommendedController');
 module.exports = {
@@ -13,11 +14,11 @@ module.exports = {
         //User endpoints
          app.patch('/api/user/patch/:id', userController.updateQualities);
          app.get('/api/user/list', userController.getUserList);
-    /*  
-        app.get('/api/user/search', userController. )
-
-        //Friend endpoints
-        app.get('/api/friend/list', friendController.)
+         app.get('/api/user/search', userController.findUsers)
+    
+         //Friend endpoints
+         app.get('/api/friend/list', friendController.getFriendsOfUser)
+         /* 
         app.post('/api/friend/add', friendController.)
         app.post('/api/friend/remove', friendController.)
 
