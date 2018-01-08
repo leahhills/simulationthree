@@ -1,5 +1,7 @@
 //Possibilities
 
+var possibleImages=['https://robohash.org/nakjfhwaihwabifb?set=set4','https://robohash.org/kjhkhkj?set=set4','https://robohash.org/aldknwhoqvwobvqaobv?set=set4','https://robohash.org/jekfoqninqowhnvowibfo?set=set4','https://robohash.org/askjdhadkjhsdjhadohsadad?set=set4','https://robohash.org/kjsahdkjahdkshadkshadshadshadkjshad?set=set4','https://robohash.org/owqonqwufbvbeivbvb?set=set4','https://robohash.org/zxkjakbabksxbxbaksxbj?set=set4','https://robohash.org/jhkjhajdhsadadhs?set=set4','https://robohash.org/kjhoihohhaohdasd?set=set4','https://robohash.org/kjhskjdhkahdsad?set=set4','https://robohash.org/kjhkjhhhh?set=set4','https://robohash.org/kjkjhhhkh?set=set4','https://robohash.org/woaijwinqwonamosmdoani?set=set4','https://robohash.org/zzzzzzzzhajhakakak?set=set4','https://robohash.org/kllkooqqqqoqsdinefbba?set=set4','https://robohash.org/ioejiowneroiaoicowinabooooooo?set=set4','https://robohash.org/wqonqwinoiqncoimwqpmocmpowmc?set=set4','https://robohash.org/wlkasoaasda?set=set4','https://robohash.org/qwieoqjweoewijqmpo?set=set4'];
+
 
 
 var possibleBirthdayDay=[01,02,03,04,05,06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31];
@@ -87,6 +89,11 @@ function getRandomBirthYear(){
   
 }
 
+function getRandomImage(){
+  let max = possibleImages.length-1;
+  let picture = possibleImages[getRandomNumber(0,max)];
+    return `${picture}`;
+}
 
 // Main part of program
 let amount = 423;
@@ -101,12 +108,13 @@ for(let i = 0; i < amount; i++) {
   let randomBirthMonth = getRandomMonth();
   let randomBirthDay = getRandomBirthDay();
   let randomBirthYear = getRandomBirthYear();
-  let output = `('${randomFirstName}', '${randomLastName}', '${randomGender}','${randomHairColor}','${randomEyeColor}','${randomHobby}','${randomBirthMonth}', ${randomBirthDay}, ${randomBirthYear}),`;
+  let randomImage = getRandomImage();
+  
+  let output = `('${randomFirstName}', '${randomLastName}', '${randomGender}','${randomHairColor}','${randomEyeColor}','${randomHobby}','${randomBirthMonth}', ${randomBirthDay}, ${randomBirthYear},'${randomImage}'),`;
   console.log(output);
 }
 
 
-//('Gabrielle','Xenasidekick','Female','Blonde','Blue','Rafting','May',18,1995),
 
 
 
