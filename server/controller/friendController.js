@@ -14,8 +14,8 @@ module.exports={
         });
     },
     addFriend:(req, res, next) => {
-        //const currentUserId = req.session.passport.user;
-        const currentUserId = 433;
+        const currentUserId = req.session.passport.user;
+        //const currentUserId = 433;
         const friendId = req.body.friendId;
         const dbInstance = req.app.get('db');
 
