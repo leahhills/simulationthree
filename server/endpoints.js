@@ -14,10 +14,11 @@ module.exports = {
         //User endpoints
          app.patch('/api/user/patch/:id', userController.updateQualities);
          app.get('/api/user/list', userController.getUserList);
-         app.get('/api/user/search', userController.findUsers)
+         app.get('/api/user/search', userController.findUsers);
     
          //Friend endpoints
-         app.get('/api/friend/list', friendController.getFriendsOfUser)
+         app.get('/api/friend/list', friendController.getFriendsOfUser);
+         app.post('/api/friend/list', friendController.addFriend);
          /* 
         app.post('/api/friend/add', friendController.)
         app.post('/api/friend/remove', friendController.)
