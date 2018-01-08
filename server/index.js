@@ -39,6 +39,7 @@ passport.use(new Auth0Strategy({
     db
         .find_auth_user([profile.identities[0].user_id])
         .then(user => {
+            console.log('did we find auth user', user)
             if (user[0]) 
                 return done(null, user[0].id);
             else {
@@ -53,26 +54,18 @@ passport.use(new Auth0Strategy({
             }
 
         })
+        .catch(err => console.log('Error finding auth user: ', err));
 
-    return done(null, profile);
+    //return done(null, profile);
 }));
-
-// app.get("/auth", passport.authenticate("auth0")); app.get( "/auth/callback",
-//  passport.authenticate("auth0", {     successRedirect:
-// "http://localhost:3000/landingpage", //redirecting to dashboard
-// failureRedirect: "/auth"   }) ); app.get("/auth/me", (req, res) => {   if
-// (!req.user) {     return res.status(404).send("User Not Found");   } else {
-// return res.status(200).send(req.user);   } }); app.get("/auth/logout", (req,
-// res) => {   req.logOut();   res.redirect(200, "http://localhost:3000"); });
 
 app.get('/auth', passport.authenticate('auth0'));
 
 app.get('/auth/callback', passport.authenticate('auth0', {
     successRedirect: `http://localhost:3000/landingpage`,
     failureRedirect: `http://localhost:3000/`
-    // successRedirect: `http://localhost:${process.env.SERVER_PORT || 3008}`
-    // failureRedirect:  `http://localhost:/`
 }));
+
 
 //an endpoint that returns a 404 if theres no user and 200 if there is.
 app.get('/api/user', (req, res) => {
@@ -85,8 +78,10 @@ app.get('/api/user', (req, res) => {
     }
 });
 
+
+
 //logout
-app.get("/auth/logout", (req, res) => {
+app.get('/auth/logout', (req, res) => {
     req.logOut();
     res.redirect(302, 'http://localhost:3000/');
 });
@@ -96,20 +91,20 @@ passport.serializeUser((id, done) => {
 })
 
 passport.deserializeUser((id, done) => {
-    const _id = id.identities[0].user_id;
-    console.log("DO I EVEN HAD A REAL ID", _id);
-    app
-        .get('db')
-        .find_auth_user([_id])
-        .then((user) => {
-            console.log("DID I FIND USER?", user);
-            done(null, _id);
-        });
+    console.log('did i get here properly?', id)
+    // const _id = id.identities[0].user_id;
+    // console.log("DO I EVEN HAD A REAL ID", _id);
+    app.get('db').find_user([id])
+        .then(user => {
+            console.log("DID I FIND USER?", user[0]);
+            done(null, user[0]);
+        })
+        .catch(err => console.log('Error finding auth user', err));
 });
 
 
 
-//reccomended endpoint check to see if work
+
 
 endpoints.buildEndPoints(app);
 
