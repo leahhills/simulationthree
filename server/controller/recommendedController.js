@@ -7,10 +7,14 @@ module.exports = {
 
     getRecommended: (req, res, next) => {
         const dbInstance = req.app.get('db');
-        const auth_id = req.body;
-        const hobby = req.body;
-        dbInstance.get_recommended([auth_id,hobby])
+        const {firstname,lastname,gender,haircolor,eyecolor,hobby,birthmonth,birthday,birthyear} = req.body;
+        const user = req.user.id;
+
+        dbInstance.get_recommended([firstname,lastname,gender,haircolor,eyecolor,hobby,birthmonth,birthday,birthyear])
         .then((response)=>{
+
+            console.log('Here are the list of rec',response);
+
             res.status(201).send('wahoo here is rec list');
         })
         .catch((err)=>{
@@ -22,10 +26,10 @@ module.exports = {
         // get request body
         // get access to databaseInstance
         const dbInstance = req.app.get('db');
-        const {firstname,lastname,gender,haircolor,eyecolor,hobby,birthday,birthmonth,birthyear} = req.body;
+        const {user_id,friend_id} = req.body;
         console.log('i am the req for add',req.body);
         // attempt to insert a new record into the database using the request body and the database instance
-        dbInstance.add_friendtouserlist([firstname,lastname,gender,haircolor,eyecolor,hobby,birthday,birthmonth,birthyear])
+        dbInstance.add_to_friendlist_table([user_id,friend_id])
         .then(response => {
             console.log('response', response);
             res.status(201).send('yay we have another one on friendlist');

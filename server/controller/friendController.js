@@ -7,6 +7,9 @@ module.exports={
 
         dbInstance.find_friends_of_user([currentUserId])
         .then(response => {
+
+        console.log('this is current user of getfriendsofuser',currentUserId);
+
          res.status(200).send(response);   
         })
         .catch(err => {

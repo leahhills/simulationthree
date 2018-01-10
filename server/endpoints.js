@@ -25,7 +25,7 @@ module.exports = {
          app.get('/api/user/search', userController.findUsers);
     
 
-//DOUBLE CHECK ON THESE ONES!!
+
          //Friend endpoints
          app.get('/api/friend/list', friendController.getFriendsOfUser);
          app.post('/api/friend/add', friendController.addFriend);
