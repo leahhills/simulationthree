@@ -201,7 +201,7 @@ export default class LandingPage extends Component {
         const friendsListElement = this.state.friendsList.map(friend => {
             return (
                 <div className="friendsListItem">
-                    <div className="test_picture"></div>
+                    <div className="test_picture"><img className="robopic"src="https://robohash.org/ojojaoisdjoadjoasjdasjdi?set=set4" alt="meow"/></div>
                     <div className="friendsListItemName">{ friend.name }</div>
                     <button className="add_friend_button">Add Friend</button>  
                 </div>

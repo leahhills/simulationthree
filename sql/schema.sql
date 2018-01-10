@@ -2,6 +2,8 @@
 DROP TABLE IF EXISTS FriendList;
 DROP TABLE IF EXISTS Users;
 
+-- creating tables--
+
 CREATE TABLE Users(
     id SERIAL PRIMARY KEY,
     username TEXT NULL,
@@ -20,10 +22,30 @@ CREATE TABLE Users(
 );
 
 CREATE TABLE FriendList(
-    user_id TEXT NULL,
-    friend_id INTEGER NOT NULL
+    user_id INTEGER NULL,
+    friend_id INTEGER NULL
 );
 
+--Adding friend to friendlist based off of logged in user--
+
+
+
+INSERT INTO FriendList(
+    user_id,
+    friend_id
+)
+VALUES
+(429,1),
+(429,2),
+(429,3),
+(429,4),
+(429,6),
+(429,7),
+(429,8);
+
+
+
+--adding users to database table Users--
 
 INSERT INTO Users(
     firstname,
@@ -527,6 +549,6 @@ VALUES
 ('RavenTorie', 'LylaArron', 'Male','Green','Blue','Hiking','May', 1, 2006,'https://robohash.org/askjdhadkjhsdjhadohsadad?set=set4'),
 ('JessicaNora', 'EsmereldaKia', 'Male','Brown','Blue','Video Games','November', 4, 1967,'https://robohash.org/owqonqwufbvbeivbvb?set=set4'),
 ('AntonioTalia', 'HollyLuke', 'Male','Red','Green','Hiking','February', 16, 1925,'https://robohash.org/wqonqwinoiqncoimwqpmocmpowmc?set=set4'),
-('ArturoAsa', 'Leopold2Nottosmartbum', 'Female','Red','Blue','Hiking','May', 3, 2013,'https://robohash.org/wqonqwinoiqncoimwqpmocmpowmc?set=set4'), 
+('ArturoAsa', 'Leopold2Nottosmartbum', 'Female','Red','Blue','Hiking','May', 3, 2013,'https://robohash.org/wqonqwinoiqncoimwqpmocmpowmc?set=set4');
  
  

@@ -81,7 +81,7 @@ app.get('/api/user', (req, res) => {
 
 
 //logout
-app.get('/auth/logout', (req, res) => {
+app.get('/auth/logout', (req, res,next) => {
     req.logOut();
     res.redirect(302, 'http://localhost:3000/');
 });

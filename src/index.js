@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App'; 
-
+import store from './ducks/store';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
@@ -13,11 +13,11 @@ import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
-    // <Provider store = { store }>
+    <Provider store = { store }>
         <BrowserRouter> 
             <App/>
         </BrowserRouter>
-    // </Provider>
+    </Provider>
     , document.getElementById('root'));
 
 registerServiceWorker();

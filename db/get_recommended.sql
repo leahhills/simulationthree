@@ -1,0 +1,2 @@
+SELECT * FROM Users
+WHERE $1 = $2;

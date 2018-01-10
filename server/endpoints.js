@@ -6,9 +6,17 @@ const friendController = require('./controller/friendController');
 module.exports = {
     buildEndPoints: (app)=>{
        
-        //Reccomended endpoints
+        //Recommended endpoints
+
+
+        //still need to finish recommended one
         app.post('/api/recommended', recommendedController.getRecommended);
+        //
+        
         app.post('/api/recommended/add', recommendedController.addToFriendsList);
+
+
+
 
 
         //User endpoints
@@ -16,20 +24,14 @@ module.exports = {
          app.get('/api/user/list', userController.getUserList);
          app.get('/api/user/search', userController.findUsers);
     
+
+//DOUBLE CHECK ON THESE ONES!!
          //Friend endpoints
          app.get('/api/friend/list', friendController.getFriendsOfUser);
-         app.post('/api/friend/list', friendController.addFriend);
-         /* 
-        app.post('/api/friend/add', friendController.)
-        app.post('/api/friend/remove', friendController.)
+         app.post('/api/friend/add', friendController.addFriend);
+         app.post('/api/friend/remove', friendController.removeFriend);
 
-        //Don't know if i need this here but here is auth endpoints
-        app.get('/api/auth/login', authController.)
-        app.get('/api/auth/setUser', authController.)
-        api.get('/api/auth/authenticated', authController.)
-        app.post('/api/auth/logout', authController.)
-*/
-        
+  
 
         
 

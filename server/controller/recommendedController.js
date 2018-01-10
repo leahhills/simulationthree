@@ -6,8 +6,16 @@
 module.exports = {
 
     getRecommended: (req, res, next) => {
-        // const friendsList = service.friendsList;
-        // res.send(friendsList);
+        const dbInstance = req.app.get('db');
+        const auth_id = req.body;
+        const hobby = req.body;
+        dbInstance.get_recommended([auth_id,hobby])
+        .then((response)=>{
+            res.status(201).send('wahoo here is rec list');
+        })
+        .catch((err)=>{
+            res.status(500).send(err);
+        })
     },
 
     addToFriendsList:(req, res, next)=>{
