@@ -83,7 +83,7 @@ app.get('/api/user', (req, res) => {
 //logout
 app.get('/auth/logout', (req, res,next) => {
     req.logOut();
-    res.redirect(302, 'http://localhost:3000/');
+    res.redirect(302, 'https://' + process.env.AUTH0_DOMAIN +'/v2/logout?returnTo=http%3A%2F%2Flocalhost%3A3000%2F');
 });
 
 passport.serializeUser((id, done) => {
