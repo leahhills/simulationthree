@@ -6,20 +6,47 @@
 module.exports = {
 
     getRecommended: (req, res, next) => {
+        console.log('am i getting here to get recomend',req.user.id);
         const dbInstance = req.app.get('db');
-        const {firstname,lastname,gender,haircolor,eyecolor,hobby,birthmonth,birthday,birthyear} = req.body;
-        const user = req.user.id;
+        const userId = req.user.id;
 
-        dbInstance.get_recommended([firstname,lastname,gender,haircolor,eyecolor,hobby,birthmonth,birthday,birthyear])
-        .then((response)=>{
+        
+        dbInstance.find_user(userId)
+        .then(user => {
+            dbInstance.get_recommended([userId, 'Video Games', 'hobby'])
+            .then(recommendedFriends => {
 
-            console.log('Here are the list of rec',response);
+                console.log('recmdfirends',recommendedFriends.length);
 
-            res.status(201).send('wahoo here is rec list');
+                res.status(200).send(recommendedFriends);
+            })
+            .catch(err => {
+                console.log('recerror',err)
+                res.status(500).send(err);
+            });
         })
-        .catch((err)=>{
+        .catch(err=>{
             res.status(500).send(err);
         })
+
+
+
+
+
+
+
+        // const {firstname,lastname,gender,haircolor,eyecolor,hobby,birthmonth,birthday,birthyear} = req.body;
+
+        // dbInstance.get_recommended([firstname,lastname,gender,haircolor,eyecolor,hobby,birthmonth,birthday,birthyear])
+        // .then((response)=>{
+
+        //     console.log('Here are the list of rec',response);
+
+        //     res.status(201).send('wahoo here is rec list');
+        // })
+        // .catch((err)=>{
+        //     res.status(500).send(err);
+        // })
     },
 
     addToFriendsList:(req, res, next)=>{
