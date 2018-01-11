@@ -1,7 +1,3 @@
-/* ENDPOINT: '/api/recommended' */
-
-// friend service - this needs to be removed eventually when you get stuff from postgresql
-// const service = require('../services/friendsService');
 
 module.exports = {
 
@@ -30,24 +26,6 @@ module.exports = {
             res.status(500).send(err);
         })
 
-
-
-
-
-
-
-        // const {firstname,lastname,gender,haircolor,eyecolor,hobby,birthmonth,birthday,birthyear} = req.body;
-
-        // dbInstance.get_recommended([firstname,lastname,gender,haircolor,eyecolor,hobby,birthmonth,birthday,birthyear])
-        // .then((response)=>{
-
-        //     console.log('Here are the list of rec',response);
-
-        //     res.status(201).send('wahoo here is rec list');
-        // })
-        // .catch((err)=>{
-        //     res.status(500).send(err);
-        // })
     },
 
     addToFriendsList:(req, res, next)=>{
@@ -66,29 +44,7 @@ module.exports = {
             console.log(' add error', err);
             res.status(500).send(err);
         });
-    }
-        // if this was all successful, return a 201
-
-        // if it was not successful, return a 500 (or a 400 if the request body data was bad)
-
-        // placeholder code
-        // return res.status(201).send('pooooooodoo');
-    }
-
- 
-
-
-// module.exports= {
     
-//     // findRec:(req,res,next)=>{
-//         //     const dbInstance = req.app.get('db')
-//         //     const { firstname, lastname, gender, haircolor, eyecolor, hobby, birthday } = req.body
-        
-//         //     dbInstance.findRec([ firstname, lastname, gender, haircolor, eyecolor, hobby, birthday,auth_id])
-//         //         .then(()=>res.status(200).send('poop was posted'))
-//         //         .catch(err => res.status(500).send(err))
-        
-        
-        
-//         //     }
-//     }
+        }
+    }
+
