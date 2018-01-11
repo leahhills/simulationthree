@@ -8,15 +8,9 @@ module.exports = {
        
         //Recommended endpoints
 
-
-        //still need to finish recommended one
         app.post('/api/recommended', recommendedController.getRecommended);
-        //
-        
+        //still need to finish recommended one
         app.post('/api/recommended/add', recommendedController.addToFriendsList);
-
-
-
 
 
         //User endpoints
@@ -24,7 +18,6 @@ module.exports = {
          app.get('/api/user/list', userController.getUserList);
          app.get('/api/user/search', userController.findUsers);
     
-
 
          //Friend endpoints
          app.get('/api/friend/list', friendController.getFriendsOfUser);

@@ -9,7 +9,11 @@ module.exports = {
         
         dbInstance.find_user([userId])
         .then(user => {
+            console.log('rec user',user)
+            
             const value = user[0][field];
+            
+            console.log('checking userid',userId,value,field);
             dbInstance.get_recommended([userId, value, field])
             .then(recommendedFriends => {
 
