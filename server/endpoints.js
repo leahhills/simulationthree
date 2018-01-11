@@ -4,7 +4,7 @@ const friendController = require('./controller/friendController');
 // where I will put the different controllers also need to put the sql methods that will be executed here.
 // const recommended = require('./controller/recommendedController');
 module.exports = {
-    buildEndPoints: (app)=>{
+    buildEndPoints: (app) => {
        
         //Recommended endpoints
 

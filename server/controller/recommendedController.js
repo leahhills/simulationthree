@@ -9,11 +9,12 @@ module.exports = {
         console.log('am i getting here to get recomend',req.user.id);
         const dbInstance = req.app.get('db');
         const userId = req.user.id;
-
+        const field = req.body.field;
         
-        dbInstance.find_user(userId)
+        dbInstance.find_user([userId])
         .then(user => {
-            dbInstance.get_recommended([userId, 'Video Games', 'hobby'])
+            const value = user[0][field];
+            dbInstance.get_recommended([userId, value, field])
             .then(recommendedFriends => {
 
                 console.log('recmdfirends',recommendedFriends.length);
