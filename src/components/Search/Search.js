@@ -7,13 +7,16 @@ export default class Search extends Component {
     constructor(props) {
         super(props);
 
+        const { match: { params } } = this.props;
+
         this.service = new UserService();
 
         this.state = {
             searchText: '',
             baseFriendsList: [],
             friendsList: [],
-            selectOption: ''
+            selectOption: '',
+            ghettoPageArray: []
         }
         
         this.searchClick = this.searchClick.bind(this);
@@ -21,16 +24,22 @@ export default class Search extends Component {
         this.resetClick = this.resetClick.bind(this);
         this.handleSelectChange = this.handleSelectChange.bind(this);
 
-        this.getUserList(1);
+        this.getUserList(params.pageId);
     }
 
     getUserList(page) {
+        // should really have this call in ducks and cache the response and other stuff so it doesn't keep getting called
         this.service.getUserList(page)
         .then(friendsList => {
             console.log(friendsList.data)
+            const _ghettoPageArray = [];
+            for(let i = 0; i < friendsList.data.totalPages; i++) {
+                _ghettoPageArray.push(i+1);
+            }
             this.setState({
                 baseFriendsList: friendsList.data.userList,
-                friendsList: friendsList.data.userList
+                friendsList: friendsList.data.userList,
+                ghettoPageArray: _ghettoPageArray
             });
         })
         .catch(err => {
@@ -85,6 +94,17 @@ export default class Search extends Component {
                 );
             });
 
+        const ghettoPaginationButtons = this.state.ghettoPageArray
+            .map(pageId => {
+                return (
+                    <a key={pageId} className="pagination_link" href={`/search/${pageId}`}>
+                        <div className="pagination_link_container">
+                            <span>{pageId}</span>
+                        </div>
+                    </a>
+                )
+            });
+
 
         return (
             <div>
@@ -115,113 +135,7 @@ export default class Search extends Component {
                                 <div className="pagination_parent">
                                     <div className="pagination_container_child">
 
-                                        <a className="pagination_link" href="/search/1">
-                                            <div className="pagination_link_container">
-                                                <span>1</span>
-                                            </div>
-                                        </a>
-
-                                        <a className="pagination_link" href="/search/2">
-                                            <div className="pagination_link_container">
-                                                <span>2</span>
-                                            </div>
-                                        </a>
-
-                                        <a className="pagination_link" href="/search/3">
-                                            <div className="pagination_link_container">
-                                                <span>3</span>
-                                            </div>
-                                        </a>
-
-                                        <a className="pagination_link" href="/search/4">
-                                            <div className="pagination_link_container">
-                                                <span>4</span>
-                                            </div>
-                                        </a>
-
-                                        <a className="pagination_link" href="/search/5">
-                                            <div className="pagination_link_container">
-                                                <span>5</span>
-                                            </div>
-                                        </a>
-
-                                        <a className="pagination_link" href="/search/6">
-                                            <div className="pagination_link_container">
-                                                <span>6</span>
-                                            </div>
-                                        </a>
-
-                                        <a className="pagination_link" href="/search/7">
-                                            <div className="pagination_link_container">
-                                                <span>7</span>
-                                            </div>
-                                        </a>
-
-                                        <a className="pagination_link" href="/search/8">
-                                            <div className="pagination_link_container">
-                                                <span>8</span>
-                                            </div>
-                                        </a>
-
-                                        <a className="pagination_link" href="/search/9">
-                                            <div className="pagination_link_container">
-                                                <span>9</span>
-                                            </div>
-                                        </a>
-
-                                        <a className="pagination_link" href="/search/10">
-                                            <div className="pagination_link_container">
-                                                <span>10</span>
-                                            </div>
-                                        </a>
-
-                                        <a className="pagination_link" href="/search/11">
-                                            <div className="pagination_link_container">
-                                                <span>11</span>
-                                            </div>
-                                        </a>
-
-                                        <a className="pagination_link" href="/search/12">
-                                            <div className="pagination_link_container">
-                                                <span>12</span>
-                                            </div>
-                                        </a>
-
-                                        <a className="pagination_link" href="/search/13">
-                                            <div className="pagination_link_container">
-                                                <span>13</span>
-                                            </div>
-                                        </a>
-
-                                        <a className="pagination_link" href="/search/14">
-                                            <div className="pagination_link_container">
-                                                <span>14</span>
-                                            </div>
-                                        </a>
-
-                                        <a className="pagination_link" href="/search/15">
-                                            <div className="pagination_link_container">
-                                                <span>15</span>
-                                            </div>
-                                        </a>
-
-                                        <a className="pagination_link" href="/search/16">
-                                            <div className="pagination_link_container">
-                                                <span>16</span>
-                                            </div>
-                                        </a>
-
-                                        <a className="pagination_link" href="/search/17">
-                                            <div className="pagination_link_container">
-                                                <span>17</span>
-                                            </div>
-                                        </a>
-
-                                        <a className="pagination_link" href="/search/18">
-                                            <div className="pagination_link_container">
-                                                <span>18</span>
-                                            </div>
-                                        </a>
+                                       {ghettoPaginationButtons}
 
                                     </div>
 

@@ -14,7 +14,7 @@ export default class Header extends Component{
                 <img src={ homeiconforsim3 } alt="this is a home icon logo" className="home_logo"/>
                 </Link>
                 
-                <Link to ="/search">     
+                <Link to ="/search/1">     
                 <img src={ searchsim } alt="this is a magnifying glass logo" className="search_logo"/>
                 </Link>
                 

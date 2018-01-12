@@ -12,6 +12,6 @@ export default(
         <Route exact path='/' component ={ Login  } />
         <Route path='/landingpage' component ={ LandingPage } />
         <Route path='/profile' component ={ Profile } />
-        <Route path='/search' component ={ Search  } />
+        <Route path='/search/:pageId' component ={ Search  } />
     </Switch>
 )
