@@ -11,5 +11,6 @@ WHERE
             FriendList FL
         WHERE 
             FL.user_id = $1
+            AND FL.friend_id IS NOT NULL
     )
     AND U.id != $1;

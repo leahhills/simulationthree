@@ -13,19 +13,39 @@ export default class Profile extends Component {
 
         this.state = {
             currentUser: {},
-            firstNameInput:'',
-            lastNameInput:''
+            defaultUser: {}        
         };
 
+        this.updateUser= this.updateUser.bind(this);
+        this.handleFirstNameInput=this.handleFirstNameInput.bind(this);
+        this.handleLastNameInput=this.handleLastNameInput.bind(this);
+        this.handleSelectGender=this.handleSelectGender.bind(this);
+        this.handleSelectHairColor=this.handleSelectHairColor.bind(this);
+        this.handleSelectEyeColor=this.handleSelectEyeColor.bind(this);
+        this.handleSelectHobby=this.handleSelectHobby.bind(this);
+        this.handleSelectBirthDay = this.handleSelectBirthDay.bind(this);
+        this.handleSelectBirthMonth=this.handleSelectBirthMonth.bind(this);
+        this.handleSelectBirthYear=this.handleSelectBirthYear.bind(this);
+        this.resetUser = this.resetUser.bind(this);
+       
         this.getCurrentUser();
+    }
+
+    resetUser() {
+        const _defaultUser = Object.assign({}, this.state.defaultUser);
+        this.setState({
+            currentUser: _defaultUser
+        });
     }
 
     getCurrentUser() {
         this.service.getCurrentUser()
         .then(response => {
             console.log('got current user', response.data);
+            const userData = response.data;
             this.setState({
-                currentUser: response.data
+                currentUser: userData,
+                defaultUser: userData
             });
         })
         .catch(err => {
@@ -34,7 +54,17 @@ export default class Profile extends Component {
     }
 
     updateUser() {
-        this.service.updateUser(this.state.currentUser.id)
+        const userToUpdate = {
+            firstname: this.state.currentUser.firstname,
+            lastname: this.state.currentUser.lastname,
+            haircolor: this.state.currentUser.haircolor,
+            eyecolor: this.state.currentUser.eyecolor,
+            hobby: this.state.currentUser.hobby,
+            birthmonth: this.state.currentUser.birthmonth,
+            birthday: this.state.currentUser.birthday,
+            birthyear: this.state.currentUser.birthyear
+        };
+        this.service.updateUser(this.state.currentUser.id, userToUpdate)
         .then(response => {
             console.log('successfully updated user');
         })
@@ -42,6 +72,88 @@ export default class Profile extends Component {
             console.log('error updating user', err);
         })
     }
+
+    handleFirstNameInput(evt){
+        let newValue = evt.target.value;
+        let _currentUser = this.state.currentUser;
+        _currentUser.firstname = newValue;
+        this.setState({
+            currentUser: _currentUser 
+        });
+    }
+
+    handleLastNameInput(evt){
+        let newValue = evt.target.value;
+        let _currentUser = this.state.currentUser;
+        _currentUser.lastname = newValue;
+        this.setState({
+            currentUser: _currentUser 
+        });
+    }
+
+    handleSelectGender(evt){
+        let newValue = evt.target.value;
+        let _currentUser = this.state.currentUser;
+        _currentUser.gender = newValue;
+        this.setState({
+            currentUser: _currentUser 
+        });
+    }
+
+    handleSelectHairColor(evt){
+        let newValue = evt.target.value;
+        let _currentUser = this.state.currentUser;
+        _currentUser.haircolor = newValue;
+        this.setState({
+            currentUser: _currentUser 
+        });
+    }
+
+    handleSelectEyeColor(evt){
+        let newValue = evt.target.value;
+        let _currentUser = this.state.currentUser;
+        _currentUser.eyecolor = newValue;
+        this.setState({
+            currentUser: _currentUser 
+        });
+    }
+    
+    handleSelectHobby(evt){
+        let newValue = evt.target.value;
+        let _currentUser = this.state.currentUser;
+        _currentUser.hobby = newValue;
+        this.setState({
+            currentUser: _currentUser 
+        });
+    }
+    handleSelectBirthMonth(evt){
+        let newValue = evt.target.value;
+        let _currentUser = this.state.currentUser;
+        _currentUser.birthmonth = newValue;
+        this.setState({
+            currentUser: _currentUser 
+        });
+    }
+    handleSelectBirthDay(evt) {
+        let newValue = evt.target.value;
+        let _currentUser = this.state.currentUser;
+        _currentUser.birthday = newValue;
+        this.setState({
+            currentUser: _currentUser 
+        });
+    }
+    handleSelectBirthYear(evt) {
+        let newValue = evt.target.value;
+        let _currentUser = this.state.currentUser;
+        _currentUser.birthyear = newValue;
+        this.setState({
+            currentUser: _currentUser 
+        });
+    }
+
+
+
+    
 
     render() {
         return (
@@ -60,8 +172,8 @@ export default class Profile extends Component {
                                     {this.state.currentUser.firstname} {this.state.currentUser.lastname}
                                 </div>
                             <div className="button_container">
-                                <button className="update_button">Update</button>
-                                <button className="cancel_button">Cancel</button>
+                                <button className="update_button" onClick={this.updateUser}>Update</button>
+                                <button className="cancel_button" onClick={this.resetUser}>Cancel</button>
                             </div>
                         
                         </div>
@@ -80,17 +192,17 @@ export default class Profile extends Component {
                                     
                                     <div className="firstname_section">
                                         <span className="firstname_title">First Name</span>
-                                            <input type="text" className="firstname_input"/>
+                                            <input type="text" className="firstname_input" value={this.state.currentUser.firstname} onChange={this.handleFirstNameInput}/>
                                     </div>
                                     
                                     <div className="lastname_section">
-                                        <span className="lastname_title" >Last Name</span>
-                                            <input type="text" className="lastname_input"/>
+                                        <span className="lastname_title">Last Name</span>
+                                            <input type="text" value={this.state.currentUser.lastname} onChange={this.handleLastNameInput} className="lastname_input"/>
                                     </div>
 
                                     <div className="gender_section">
-                                        <span className="gender_title">Gender</span> 
-                                        <select className="gender_options">
+                                        <span className="gender_title" >Gender</span> 
+                                        <select className="gender_options" value={this.state.currentUser.gender} onChange={this.handleSelectGender}>
                                             <option value="female">Female</option>
                                             <option value="male">Male</option>
                                         </select>
@@ -98,7 +210,7 @@ export default class Profile extends Component {
 
                                     <div className="haircolor_section">
                                         <span className="haircolor_title">Hair Color</span>
-                                        <select className="haircolor_options">
+                                        <select className="haircolor_options" value={this.state.currentUser.haircolor} onChange={this.handleSelectHairColor}>
                                             <option value="brown">Brown</option>
                                             <option value="blue">Blue</option>
                                             <option value="green">Green</option>
@@ -110,7 +222,7 @@ export default class Profile extends Component {
 
                                     <div className="eyecolor_section">
                                         <span className="eyecolor_title">Eye Color</span>
-                                        <select className="eyecolor_options">
+                                        <select className="eyecolor_options" value ={this.state.currentUser.eyecolor} onChange={this.handleSelectEyeColor}>
                                             <option value="brown">Brown</option>
                                             <option value="blue">Blue</option>
                                             <option value="green">Green</option>
@@ -127,7 +239,7 @@ export default class Profile extends Component {
                                 <div className="select_options_right">
                                     <div className="hobby_select_section">
                                        <span className="hobby_title">Hobby</span> 
-                                        <select className="hobby_select_options">
+                                        <select className="hobby_select_options" value={this.state.currentUser.hobby} onChange={this.handleSelectHobby}>
                                             <option value="video games">Video Games</option>
                                             <option value="hiking">Hiking</option>
                                             <option value="fishing">Fishing</option>
@@ -135,8 +247,8 @@ export default class Profile extends Component {
                                         </select>
                                     </div>
                                     <div className="birthday_day_section">
-                                        <span className="birthday_title">Birthday</span>    
-                                        <select className="birthday_day_options">
+                                        <span className="birthday_title" >Birthday</span>    
+                                        <select className="birthday_day_options" value={this.state.currentUser.birthday} onChange={this.handleSelectBirthDay}>
                                             <option value="01">01</option>
                                             <option value="02">02</option>
                                             <option value="03">03</option>
@@ -173,19 +285,19 @@ export default class Profile extends Component {
 
                                     <div className="birthday_month_section">
                                         <span className="birthmonth_title">Birthday Month</span> 
-                                        <select className="birthday_month_options">
-                                            <option value="january">January</option>
-                                            <option value="february">February</option>
-                                            <option value="march">March</option>
-                                            <option value="april">April</option>
-                                            <option value="may">May</option>
-                                            <option value="june">June</option>
-                                            <option value="july">July</option>
-                                            <option value="august">August</option>
-                                            <option value="september">September</option>
-                                            <option value="october">October</option>
-                                            <option value="november">November</option>
-                                            <option value="december">December</option>
+                                        <select className="birthday_month_options" value ={this.state.currentUser.birthmonth} onChange={this.handleSelectBirthMonth}>
+                                            <option value="January">January</option>
+                                            <option value="February">February</option>
+                                            <option value="March">March</option>
+                                            <option value="April">April</option>
+                                            <option value="May">May</option>
+                                            <option value="June">June</option>
+                                            <option value="July">July</option>
+                                            <option value="August">August</option>
+                                            <option value="September">September</option>
+                                            <option value="October">October</option>
+                                            <option value="November">November</option>
+                                            <option value="December">December</option>
                                         </select>
                                     </div>
 

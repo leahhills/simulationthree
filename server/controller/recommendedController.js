@@ -7,7 +7,7 @@ module.exports = {
         dbInstance.find_user([userId])
         .then(user => {
             const value = user[0][field];
-            
+            console.log(userId, value, field)
             dbInstance.get_recommended([userId, value, field])
             .then(recommendedFriends => {
                 res.status(200).send(recommendedFriends);

@@ -19,7 +19,7 @@ export default class LandingPage extends Component {
         
 
 
-        axios.post(`/api/recommended`,{field:"eyecolor"})
+        axios.post(`/api/recommended`,{field: 'hobby'})
             .then((response)=>{
                 this.setState({friendList:response.data})
             })
