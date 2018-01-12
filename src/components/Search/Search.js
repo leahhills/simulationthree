@@ -16,7 +16,8 @@ export default class Search extends Component {
             baseFriendsList: [],
             friendsList: [],
             selectOption: '',
-            ghettoPageArray: []
+            ghettoPageArray: [],
+            currentFriends: []
         }
         
         this.searchClick = this.searchClick.bind(this);
@@ -31,16 +32,27 @@ export default class Search extends Component {
         // should really have this call in ducks and cache the response and other stuff so it doesn't keep getting called
         this.service.getUserList(page)
         .then(friendsList => {
-            console.log(friendsList.data)
-            const _ghettoPageArray = [];
-            for(let i = 0; i < friendsList.data.totalPages; i++) {
-                _ghettoPageArray.push(i+1);
-            }
-            this.setState({
-                baseFriendsList: friendsList.data.userList,
-                friendsList: friendsList.data.userList,
-                ghettoPageArray: _ghettoPageArray
-            });
+            this.service.getFriendsList()
+            .then(friends => {
+                console.log(friendsList.data, friends.data)
+                let _ghettoPageArray = [];
+                for(let i = 0; i < friendsList.data.totalPages; i++) {
+                    _ghettoPageArray.push(i+1);
+                }
+                let friendIds = friends.data.map(friend => {
+                    return friend.id;
+                });
+                let _friendsList = friendsList.data.userList.map(friend => {
+                    friend.isFriend = friendIds.includes(friend.id);
+                    return friend;
+                });
+                this.setState({
+                    baseFriendsList: _friendsList,
+                    friendsList: _friendsList,
+                    ghettoPageArray: _ghettoPageArray
+                });
+            })
+            .catch(err => console.log(err));
         })
         .catch(err => {
             console.log('Error getting friends list:', err);
@@ -83,13 +95,20 @@ export default class Search extends Component {
     render() {
         const friendsListElement = this.state.friendsList
             .map(friend => {
+                let button = null;
+                if(friend.isFriend) {
+                    button = <button className="remove_friend_button">Remove Friend</button>;
+                } else {
+                    button = <button className="add_friend_button">Add Friend</button>
+                }
+
                 return (
                     <div key={friend.id} className="friendsListItem">
                         <div className="test_picture">
                             <img className="robopic"src={friend.image} alt="meow"/>
                         </div>
                         <div className="friendsListItemName">{friend.firstname} {friend.lastname}</div>
-                        <button className="add_friend_button">Add Friend</button>
+                        {button}
                     </div>
                 );
             });
