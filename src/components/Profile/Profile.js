@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import HeaderProfile from './../Headers/HeaderProfile/HeaderProfile';
 import './Profile.css';
-import dogpic from './../../pictures/dogpic.jpg';
+
 import UserService from './../../services/UserService';
 
 export default class Profile extends Component {
@@ -60,13 +60,14 @@ export default class Profile extends Component {
             haircolor: this.state.currentUser.haircolor,
             eyecolor: this.state.currentUser.eyecolor,
             hobby: this.state.currentUser.hobby,
+            gender:this.state.currentUser.gender,
             birthmonth: this.state.currentUser.birthmonth,
             birthday: this.state.currentUser.birthday,
             birthyear: this.state.currentUser.birthyear
         };
         this.service.updateUser(this.state.currentUser.id, userToUpdate)
         .then(response => {
-            console.log('successfully updated user');
+            console.log('successfully updated user',userToUpdate);
         })
         .catch(err => {
             console.log('error updating user', err);

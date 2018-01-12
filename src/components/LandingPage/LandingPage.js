@@ -1,25 +1,43 @@
 import React, {Component} from 'react';
 import HeaderLanding from './../Headers/HeaderLanding/HeaderLanding';
 import './LandingPage.css';
-import dogpic from './../../pictures/dogpic.jpg';
+
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import UserService from './../../services/UserService';
 
 export default class LandingPage extends Component {
     constructor(props) {
         super(props);
 
+        this.service = new UserService();
+
         this.state = {
-           friendList:[]
+           friendList:[],
+           currentUser:{},
+           defaultUser:{}
         }
-        
+        this.getCurrentUser();
+    }
+
+    getCurrentUser() {
+        this.service.getCurrentUser()
+        .then(response => {
+            console.log('got current user', response.data);
+            const userData = response.data;
+            this.setState({
+                currentUser: userData,
+                defaultUser: userData
+            });
+        })
+        .catch(err => {
+            console.log('error getting current user', err);
+        });
     }
 
     componentDidMount(){
-        
 
-
-        axios.post(`/api/recommended`,{field: 'hobby'})
+        axios.post(`/api/recommended`,{field:'hobby'})
             .then((response)=>{
                 this.setState({friendList:response.data})
             })
@@ -35,7 +53,7 @@ export default class LandingPage extends Component {
                 <div className="friendsListItem" key={friend.id}>
 
                     <div className="test_picture">
-                        <img className="robopic"src={friend.image} alt="meow"/>
+                        <img className="robopic" src={friend.image} alt="meow"/>
                     </div>
 
                     <div className="friendsListItemName">
@@ -65,18 +83,30 @@ export default class LandingPage extends Component {
 
                 <div className="profile_container">
 
-                    <div className="profile_edit">
-                        <img src={ dogpic } alt="dogfog" className="dogpic"/>
+                    {/* <div className="profile_container_name">
                         
-                        <Link to="/profile">    
-                            <button className="edit_button">Edit Profile</button>
-                        </Link>
+                    </div> */}
+
+                    <div className="profile_edit">
+
+                        <div className="user_leftside">
+                            <img src={ this.state.currentUser.image } alt="meow" className="dogpic"/>
+                        </div>
+
+                        <div className="user_rightside">
+                                <span className="user_firstname">{this.state.currentUser.firstname}</span>
+                                <span className="user_lastname">{this.state.currentUser.lastname}</span>
+                            <Link to="/profile" style={{textDecoration:'none'}}>    
+                                <button className="edit_button" >Edit Profile</button>
+                            </Link>
+                        </div>
                         
                     </div>
 
                     <div className="welcome_box">Welcome to Helo! Find recommended friends based on
                         your similarities, and even search for them by name. The more you update your
-                        profile, the better recommendations we can make!</div>
+                        profile, the better recommendations we can make!
+                    </div>
 
                 </div>
 

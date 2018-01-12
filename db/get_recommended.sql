@@ -3,7 +3,7 @@ SELECT
 FROM
     Users U
 WHERE 
-    $3:name = $2 
+    LOWER($3:name) = LOWER($2) 
     AND U.id NOT IN (
         SELECT
             FL.friend_id

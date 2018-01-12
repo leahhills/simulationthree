@@ -2,14 +2,16 @@ module.exports = {
     getRecommended: (req, res, next) => {
         const dbInstance = req.app.get('db');
         const userId = req.user.id;
-        const field = req.body.field;
+         const field = req.body.field;
         
         dbInstance.find_user([userId])
         .then(user => {
             const value = user[0][field];
-            console.log(userId, value, field)
+            console.log('hit endpoint',userId, value, field)
+
             dbInstance.get_recommended([userId, value, field])
             .then(recommendedFriends => {
+                console.log('promise successful',recommendedFriends);
                 res.status(200).send(recommendedFriends);
             })
             .catch(err => {
