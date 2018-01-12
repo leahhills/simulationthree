@@ -20,10 +20,10 @@ module.exports={
     addFriend:(req, res, next) => {
         const currentUserId = req.user.id;
         //const currentUserId = 429;
-        const friend_id = req.body.friend_id;
+        const friendId = req.body.friendId;
         const dbInstance = req.app.get('db');
 
-        dbInstance.add_friend([currentUserId, friend_id])
+        dbInstance.add_friend([currentUserId, friendId])
         .then(response => {
             res.status(201).send('Successfully added friend.');
         })
@@ -35,10 +35,10 @@ module.exports={
 
     removeFriend:(req,res,next)=>{
         const currentUserId = req.user.id;
-        const friend_id = req.body.friend_id;
+        const friendId = req.body.friendId;
         const dbInstance = req.app.get('db');
-
-        dbInstance.remove_friend([currentUserId,friend_id])
+        console.log('going to remove friends', currentUserId, friendId)
+        dbInstance.remove_friend([currentUserId,friendId])
         .then(response=>{
             res.status(200).send(response);
         

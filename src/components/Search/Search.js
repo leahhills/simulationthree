@@ -17,15 +17,36 @@ export default class Search extends Component {
             friendsList: [],
             selectOption: '',
             ghettoPageArray: [],
-            currentFriends: []
+            currentFriends: [],
+            pageId: params.pageId
         }
         
         this.searchClick = this.searchClick.bind(this);
         this.handleSearchTextOnChange = this.handleSearchTextOnChange.bind(this);
         this.resetClick = this.resetClick.bind(this);
         this.handleSelectChange = this.handleSelectChange.bind(this);
+        this.removeFriend = this.removeFriend.bind(this);
+        this.addFriend = this.addFriend.bind(this);
 
-        this.getUserList(params.pageId);
+        this.getUserList(this.state.pageId);
+    }
+
+    removeFriend(userId) {
+        this.service.removeFriend(userId)
+        .then(response => {
+            console.log('successully removed friend:', response)
+            this.getUserList(this.state.pageId);
+        })
+        .catch(err => console.log(err));
+    }
+
+    addFriend(userId) {
+        this.service.addFriend(userId)
+        .then(response => {
+            console.log('successully added friend:', response)
+            this.getUserList(this.state.pageId);
+        })
+        .catch(err => console.log(err));
     }
 
     getUserList(page) {
@@ -63,7 +84,7 @@ export default class Search extends Component {
         console.log('I AM FILTERING ON', this.state.searchText, this.state.friendsList);
         
         const newFriendsList = this.state.baseFriendsList.filter(friend => {
-            return friend.name.toLowerCase().includes(this.state.searchText.toLowerCase());
+            return friend.firstname.toLowerCase().includes(this.state.searchText.toLowerCase()) || friend.lastname.toLowerCase().includes(this.state.searchText.toLowerCase());
         });
 
         this.setState({
@@ -97,9 +118,9 @@ export default class Search extends Component {
             .map(friend => {
                 let button = null;
                 if(friend.isFriend) {
-                    button = <button className="remove_friend_button">Remove Friend</button>;
+                    button = <button className="remove_friend_button" onClick={() => this.removeFriend(friend.id)}>Remove Friend</button>;
                 } else {
-                    button = <button className="add_friend_button">Add Friend</button>
+                    button = <button className="add_friend_button" onClick={() => this.addFriend(friend.id)}>Add Friend</button>
                 }
 
                 return (

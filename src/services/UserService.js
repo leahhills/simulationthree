@@ -10,10 +10,10 @@ export default class UserService {
         return axios.get(`/api/friend/list`);
     }
     addFriend(friendId) {
-        return axios.post(`/api/friend/add`, friendId);
+        return axios.post(`/api/friend/add`, { friendId: friendId });
     }
     removeFriend(friendId) {
-        return axios.post(`/api/friend/remove`, friendId);
+        return axios.post(`/api/friend/remove`, { friendId: friendId });
     }
     getUserList(page) {
         return axios.get(`/api/user/list?page=${page}`);
