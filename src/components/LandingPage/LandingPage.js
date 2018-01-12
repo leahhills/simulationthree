@@ -16,7 +16,7 @@ export default class LandingPage extends Component {
     }
 
     componentDidMount(){
-     axios.post(`/api/recommended`,{field:"hobby"})
+     axios.post(`/api/recommended`,{field:"eyecolor"})
         .then((response)=>{
             this.setState({friendList:response.data})
         })
@@ -30,22 +30,28 @@ export default class LandingPage extends Component {
         const friendsListElement = this.state.friendList.map(friend => {
             return (
                 <div className="friendsListItem" key={friend.id}>
-                    <div className="test_picture"><img className="robopic"src="https://robohash.org/ojojaoisdjoadjoasjdasjdi?set=set4" alt="meow"/></div>
+
+                    <div className="test_picture">
+                        <img className="robopic"src={friend.image} alt="meow"/>
+                    </div>
+
                     <div className="friendsListItemName">
-                     {friend.firstname}{friend.lastname}</div>
-                    <button className="add_friend_button">Add Friend</button>  
+                        {friend.firstname}
+                    </div>
+
+                    <div className="friendlistItemLastName">
+                        {friend.lastname}
+                    </div>
+
+                    <button className="add_friend_button">Add Friend</button>
+
                 </div>
             );
         });
 
         return (
-            
-            
 
             <div className="landing_page_parent">
-
-
-
                 
                 <div className="header_component">                
                     <HeaderLanding />
@@ -71,40 +77,27 @@ export default class LandingPage extends Component {
 
                 </div>
 
-
-
                 <div className="reccomended_friends_parent">
 
                     <div className="recmd_section_child">
 
-                    <div className="recfriends_header">
-                        
-                        <span className="friends_title"> Recommended Friends</span>
-                        <span className="sortedby_header"> Sorted by  </span>
-                    <select className="sortedby_options">
-                        <option value="first">Last Name</option>
-                        <option value="last">First Name</option>
-                        <option value="gender">Gender</option>
-                        <option value="hobby">Hobby</option>
-                        <option value="h_color">Hair Color</option>
-                        <option value="e_color">Eye Color</option>
-                        <option value="birthday">Birthday</option>
-                    </select>
-                  
-                   </div>
+                        <div className="recfriends_header">
+                            <span className="friends_title"> Recommended Friends</span>
+                            <span className="sortedby_header"> Sorted by  </span>
+                        <select className="sortedby_options">
+                            <option value="first">Last Name</option>
+                            <option value="last">First Name</option>
+                            <option value="gender">Gender</option>
+                            <option value="hobby">Hobby</option>
+                            <option value="h_color">Hair Color</option>
+                            <option value="e_color">Eye Color</option>
+                            <option value="birthday">Birthday</option>
+                        </select>
+                        </div>
 
-
-
-
-
-                    
-
-                    
                         <div className="scrollable_list">
                             { friendsListElement }
                         </div>
-                  
-
                     </div>
                 </div>
 
