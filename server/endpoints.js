@@ -7,34 +7,18 @@ module.exports = {
     buildEndPoints: (app) => {
        
         //Recommended endpoints
-
         app.post('/api/recommended', recommendedController.getRecommended);
-        //still need to finish recommended one
+            //still need to finish recommended one
         app.post('/api/recommended/add', recommendedController.addToFriendsList);
 
-
         //User endpoints
-         app.patch('/api/user/patch/:id', userController.updateQualities);
-         app.get('/api/user/list', userController.getUserList);
-         app.get('/api/user/search', userController.findUsers);
+        app.patch('/api/user/patch/:id', userController.updateQualities);
+        app.get('/api/user/list', userController.getUserList);
+        app.get('/api/user/search', userController.findUsers);
     
-
-         //Friend endpoints
-         app.get('/api/friend/list', friendController.getFriendsOfUser);
-         app.post('/api/friend/add', friendController.addFriend);
-         app.post('/api/friend/remove', friendController.removeFriend);
-
-  
-
-        
-
-
-
-
-
-
+        //Friend endpoints
+        app.get('/api/friend/list', friendController.getFriendsOfUser);
+        app.post('/api/friend/add', friendController.addFriend);
+        app.post('/api/friend/remove', friendController.removeFriend);
     }
- 
 }
-
-

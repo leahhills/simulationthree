@@ -16,13 +16,16 @@ export default class LandingPage extends Component {
     }
 
     componentDidMount(){
-     axios.post(`/api/recommended`,{field:"eyecolor"})
-        .then((response)=>{
-            this.setState({friendList:response.data})
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
+        
+
+
+        axios.post(`/api/recommended`,{field:"eyecolor"})
+            .then((response)=>{
+                this.setState({friendList:response.data})
+            })
+            .catch((err)=>{
+                console.log(err);
+            })
     }
 
     render() {

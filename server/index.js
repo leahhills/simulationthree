@@ -66,7 +66,6 @@ app.get('/auth/callback', passport.authenticate('auth0', {
     failureRedirect: `http://localhost:3000/`
 }));
 
-
 //an endpoint that returns a 404 if theres no user and 200 if there is.
 app.get('/api/user', (req, res) => {
     if (!req.user) {
@@ -77,8 +76,6 @@ app.get('/api/user', (req, res) => {
             .send(req.user);
     }
 });
-
-
 
 //logout
 app.get('/auth/logout', (req, res,next) => {
@@ -102,13 +99,7 @@ passport.deserializeUser((id, done) => {
         .catch(err => console.log('Error finding auth user', err));
 });
 
-
-
-
-
 endpoints.buildEndPoints(app);
-
-
 
 app.listen(process.env.SERVER_PORT, function () {
     console.log(`listening on port ${process.env.SERVER_PORT}`)

@@ -1,28 +1,18 @@
-
 module.exports = {
-
     getRecommended: (req, res, next) => {
-        console.log('am i getting here to get recomend',req.user.id);
         const dbInstance = req.app.get('db');
         const userId = req.user.id;
         const field = req.body.field;
         
         dbInstance.find_user([userId])
         .then(user => {
-            console.log('rec user',user)
-            
             const value = user[0][field];
             
-            console.log('checking userid',userId,value,field);
             dbInstance.get_recommended([userId, value, field])
             .then(recommendedFriends => {
-
-                console.log('recmdfirends',recommendedFriends.length);
-
                 res.status(200).send(recommendedFriends);
             })
             .catch(err => {
-                console.log('recerror',err)
                 res.status(500).send(err);
             });
         })
@@ -31,7 +21,6 @@ module.exports = {
         })
 
     },
-
     addToFriendsList:(req, res, next)=>{
         // get request body
         // get access to databaseInstance
@@ -50,5 +39,5 @@ module.exports = {
         });
     
         }
-    }
+}
 

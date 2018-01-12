@@ -1,6 +1,6 @@
 
 module.exports={
-    getFriendsOfUser:(req,res,next)=>{
+    getFriendsOfUser:(req,res,next) => {
         console.log('this is req.user',req.user);
         const currentUserId = req.user.id;
         const dbInstance = req.app.get('db');

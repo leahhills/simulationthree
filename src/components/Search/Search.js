@@ -1,134 +1,41 @@
 import React, {Component} from 'react';
 import HeaderSearch from './../Headers/HeaderSearch/HeaderSearch';
+import UserService from './../../services/UserService';
 import './Search.css';
 
 export default class Search extends Component {
     constructor(props) {
         super(props);
 
-        var _friendsList = [
-            {
-                id: 1,
-                name: 'Margarat Jamiesrs'
-            }, {
-                id: 2,
-                name: 'Xena Ryan'
-            }, {
-                id: 3,
-                name: 'Tim Boner'
-            }, {
-                id: 4,
-                name: 'Jackal Manners'
-            }, {
-                id: 5,
-                name: 'Pizza Bob'
-            }, {
-                id: 6,
-                name: 'Larry Man Dan'
-            }, {
-                id: 7,
-                name: 'Puipy The Xena2'
-            }, {
-                id: 8,
-                name: 'Kitty Yes'
-            }, {
-                id: 9,
-                name: 'Jackal Manners'
-            }, {
-                id: 10,
-                name: 'Pizza Bob'
-            }, {
-                id: 11,
-                name: 'Larry Man Dan'
-            }, {
-                id: 12,
-                name: 'Puipy The Xena2'
-            }, {
-                id: 13,
-                name: 'Puipy The Xena2'
-            }, {
-                id: 14,
-                name: 'Kitty Yes'
-            }, {
-                id: 15,
-                name: 'Jackal Manners'
-            }, {
-                id: 16,
-                name: 'Pizza Bob'
-            }, {
-                id: 17,
-                name: 'Larry Man Dan'
-            }, {
-                id: 18,
-                name: 'Puipy The Xena2'
-            }, {
-                id: 19,
-                name: 'Margarat Jamiesrs'
-            }, {
-                id: 20,
-                name: 'Xena Ryan'
-            }, {
-                id: 21,
-                name: 'Tim Boner'
-            }, {
-                id: 22,
-                name: 'Jackal Manners'
-            }, {
-                id: 23,
-                name: 'Pizza Bob'
-            }, {
-                id: 24,
-                name: 'Larry Man Dan'
-            }, {
-                id: 25,
-                name: 'Puipy The Xena2'
-            }, {
-                id: 26,
-                name: 'Kitty Yes'
-            }, {
-                id: 27,
-                name: 'Jackal Manners'
-            }, {
-                id: 28,
-                name: 'Pizza Bob'
-            }, {
-                id: 29,
-                name: 'Larry Man Dan'
-            }, {
-                id: 30,
-                name: 'Puipy The Xena2'
-            }, {
-                id: 31,
-                name: 'Puipy The Xena2'
-            }, {
-                id: 32,
-                name: 'Kitty Yes'
-            }, {
-                id: 33,
-                name: 'Jackal Manners'
-            }, {
-                id: 34,
-                name: 'Pizza Bob'
-            }, {
-                id: 35,
-                name: 'Larry Man Dan'
-            }, {
-                id: 36,
-                name: 'Puipy The Xena2'
-            }
-        ];
+        this.service = new UserService();
 
         this.state = {
             searchText: '',
-            baseFriendsList: _friendsList,
-            friendsList: _friendsList,
-            selectOption: ["First Name","Last Name"]
+            baseFriendsList: [],
+            friendsList: [],
+            selectOption: ''
         }
         
         this.searchClick = this.searchClick.bind(this);
         this.handleSearchTextOnChange = this.handleSearchTextOnChange.bind(this);
         this.resetClick = this.resetClick.bind(this);
-        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSelectChange = this.handleSelectChange.bind(this);
+
+        this.getUserList(1);
+    }
+
+    getUserList(page) {
+        this.service.getUserList(page)
+        .then(friendsList => {
+            console.log(friendsList.data)
+            this.setState({
+                baseFriendsList: friendsList.data.userList,
+                friendsList: friendsList.data.userList
+            });
+        })
+        .catch(err => {
+            console.log('Error getting friends list:', err);
+        });
     }
 
     searchClick() {
@@ -150,8 +57,13 @@ export default class Search extends Component {
         });
     }
 
-    resetClick(){
+    handleSelectChange(evt) {
+        this.setState({
+            selectOption: evt.target.value
+        });   
+    }
 
+    resetClick() {
         this.setState({
             searchText:'',
             friendsList:this.state.baseFriendsList
@@ -159,18 +71,15 @@ export default class Search extends Component {
         })
     }
 
-    handleInputChange(){
-        
-    }
-
-
     render() {
         const friendsListElement = this.state.friendsList
             .map(friend => {
                 return (
                     <div key={friend.id} className="friendsListItem">
-                        <div className="test-picture"></div>
-                        <div className="friendsListItemName">{friend.name}</div>
+                        <div className="test_picture">
+                            <img className="robopic"src={friend.image} alt="meow"/>
+                        </div>
+                        <div className="friendsListItemName">{friend.firstname} {friend.lastname}</div>
                         <button className="add_friend_button">Add Friend</button>
                     </div>
                 );
@@ -186,7 +95,7 @@ export default class Search extends Component {
                     <div className="search_content_container">
                         <div className="search_header">
 
-                            <select className="filter_firstorlast" value = {this.state.selectOption } onChange = { this.handleInputChange }>
+                            <select className="filter_firstorlast" value = { this.state.selectOption } onChange = { this.handleSelectChange }>
                                 <option value="first">Last Name</option>
                                 <option value="last">First Name</option>
                             </select>

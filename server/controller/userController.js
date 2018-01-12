@@ -74,7 +74,8 @@ module.exports = {
                     let response = {
                         userList: users,
                         userCount: userCount[0].count,
-                        totalPages: numPages
+                        totalPages: numPages,
+                        currentPage: page
                     }
                     res.status(200).send(response);
                 });

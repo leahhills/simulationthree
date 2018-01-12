@@ -7,6 +7,12 @@
   background-color:#fff;
 }
 
+.test_picture{
+    height: 80px;
+    width: 80px;
+    background-color: #D23175
+}
+
 .search_content_container{
   background-color:#fff;
   border-radius:2px;
