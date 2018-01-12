@@ -2,9 +2,47 @@ import React, { Component } from 'react';
 import HeaderProfile from './../Headers/HeaderProfile/HeaderProfile';
 import './Profile.css';
 import dogpic from './../../pictures/dogpic.jpg';
+import UserService from './../../services/UserService';
 
 export default class Profile extends Component {
     
+    constructor(props) {
+        super(props);
+
+        this.service = new UserService();
+
+        this.state = {
+            currentUser: {},
+            firstNameInput:'',
+            lastNameInput:''
+        };
+
+        this.getCurrentUser();
+    }
+
+    getCurrentUser() {
+        this.service.getCurrentUser()
+        .then(response => {
+            console.log('got current user', response.data);
+            this.setState({
+                currentUser: response.data
+            });
+        })
+        .catch(err => {
+            console.log('error getting current user', err);
+        });
+    }
+
+    updateUser() {
+        this.service.updateUser(this.state.currentUser.id)
+        .then(response => {
+            console.log('successfully updated user');
+        })
+        .catch(err => {
+            console.log('error updating user', err);
+        })
+    }
+
     render() {
         return (
           <div>
@@ -17,9 +55,9 @@ export default class Profile extends Component {
 
                         <div className="user_content_header">
                             
-                                <img src={ dogpic } alt="supposed to be a robot pic"className="profile_img"/>
+                                <img src={ this.state.currentUser.image } alt="supposed to be a robot pic"className="profile_img"/>
                                 <div className="profile_username_container">
-                                    Billy Bob Thornton
+                                    {this.state.currentUser.firstname} {this.state.currentUser.lastname}
                                 </div>
                             <div className="button_container">
                                 <button className="update_button">Update</button>

@@ -18,4 +18,10 @@ export default class UserService {
     getUserList(page) {
         return axios.get(`/api/user/list?page=${page}`);
     }
+    updateUser(userId) {
+        return axios.patch(`/api/user/patch/${userId}`);
+    }
+    getCurrentUser() {
+        return axios.get(`/api/user`);
+    }
 }

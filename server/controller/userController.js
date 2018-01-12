@@ -1,5 +1,17 @@
 module.exports = {
+    getCurrentUser: (req, res, next) => {
+        const userId = req.user.id;
+        const dbInstance = req.app.get('db');
 
+        dbInstance.find_user(userId)
+        .then(response => {
+            res.status(200).send(response[0])
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).send(err);
+        });
+    },
     updateQualities: (req, res, next) => {
         const dbInstance = req.app.get('db');
         const {

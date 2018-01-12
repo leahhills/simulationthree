@@ -15,6 +15,7 @@ module.exports = {
         app.patch('/api/user/patch/:id', userController.updateQualities);
         app.get('/api/user/list', userController.getUserList);
         app.get('/api/user/search', userController.findUsers);
+        app.get('/api/user', userController.getCurrentUser);
     
         //Friend endpoints
         app.get('/api/friend/list', friendController.getFriendsOfUser);
